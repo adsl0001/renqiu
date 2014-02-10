@@ -79,4 +79,36 @@ public final class DateUtil {
 		long days = (end.getTime() - begin.getTime()) / 86400000L;
 		return days;
 	}
+	  /**
+     * 计算日期相差天数
+     * 
+     * @param early
+     *            开始时间
+     * @param late
+     *            结束时间
+     * @return 相差天数  ,日期相等返回1 
+     * @author 都本尊dubz@nancal.com
+     * @version 1.0, 2013-11-13
+     * @since WorkRecordManage 1.0
+     */
+    public static int daysBetween(Date early, Date late) {
+
+        java.util.Calendar calst = java.util.Calendar.getInstance();
+        java.util.Calendar caled = java.util.Calendar.getInstance();
+        calst.setTime(early);
+        caled.setTime(late);
+        // 设置时间为0时
+        calst.set(java.util.Calendar.HOUR_OF_DAY, 0);
+        calst.set(java.util.Calendar.MINUTE, 0);
+        calst.set(java.util.Calendar.SECOND, 0);
+        caled.set(java.util.Calendar.HOUR_OF_DAY, 0);
+        caled.set(java.util.Calendar.MINUTE, 0);
+        caled.set(java.util.Calendar.SECOND, 0);
+        // 得到两个日期相差的天数
+        int days = ((int) (caled.getTime().getTime() / 1000) - (int) (calst
+                .getTime().getTime() / 1000)) / 3600 / 24;
+        days = Math.abs(days);
+        days++;
+        return days;
+    }
 }

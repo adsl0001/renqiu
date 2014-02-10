@@ -11,8 +11,8 @@ import javax.persistence.Table;
  * 
  */
 @Entity
-@Table(name="T_workingDay")
-public class WorkingDay {
+@Table(name="T_Holidays")
+public class Holidays {
 	@Id
 	private String theDate;
 	/**
