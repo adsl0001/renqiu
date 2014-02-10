@@ -87,9 +87,7 @@ public final class DateUtil {
      * @param late
      *            结束时间
      * @return 相差天数  ,日期相等返回1 
-     * @author 都本尊dubz@nancal.com
-     * @version 1.0, 2013-11-13
-     * @since WorkRecordManage 1.0
+     * @author 都本尊 
      */
     public static long daysBetween(Date early, Date late) {
 

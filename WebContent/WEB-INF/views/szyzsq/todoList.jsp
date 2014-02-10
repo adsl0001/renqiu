@@ -44,6 +44,7 @@
 				<th>联系方式</th>
 				<th>当前节点</th>
 				<th>任务创建时间</th>
+				<th>任务到期时间</th>
 				<th>流程状态</th>
 				<th>当前处理人</th>
 			</tr>
@@ -61,6 +62,7 @@
 						<a class="trace" href='#' pid="${pi.id }" title="点击查看流程图">${task.name }</a>
 					</td>
 					<td><fmt:formatDate value="${task.createTime }" pattern="yyyy-MM-dd hh:mm:ss" /></td>
+					<td><fmt:formatDate value="${task.dueDate}" pattern="yyyy-MM-dd hh:mm:ss" /></td>
 					<td>${pi.suspended ? "已挂起" : "正常" }；<b title='流程版本号'>V: ${szyzsq.processDefinition.version }</b></td>
 					<td>${task.assignee }<a href="${ctx}/szyzsq/handleTask/${task.id }">办理</a></td>
 				</tr>
