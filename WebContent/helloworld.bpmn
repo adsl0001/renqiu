@@ -14,7 +14,7 @@
     <endEvent id="endevent4" name="End"></endEvent>
     <exclusiveGateway id="exclusivegateway1" name="Exclusive Gateway"></exclusiveGateway>
     <userTask id="gongshang_2" name="工商审核未通过" activiti:assignee="#{assignee}" activiti:formKey="/szyzsq/view"></userTask>
-    <userTask id="usertask23" name="办理营业执照" activiti:assignee="#{assignee}" activiti:formKey="/szyzsq/view"></userTask>
+    <userTask id="usertask23" name="办理营业执照" activiti:assignee="#{assignee}" activiti:dueDate="${dueDate.day(3)}" activiti:formKey="/szyzsq/view"></userTask>
     <sequenceFlow id="flow36" sourceRef="usertask4" targetRef="parallelgateway1"></sequenceFlow>
     <exclusiveGateway id="exclusivegateway2" name="Exclusive Gateway"></exclusiveGateway>
     <sequenceFlow id="flow37" sourceRef="usertask23" targetRef="parallelgateway1"></sequenceFlow>
