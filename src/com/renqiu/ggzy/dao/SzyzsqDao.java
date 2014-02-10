@@ -15,7 +15,6 @@ import com.renqiu.ggzy.entity.Szyzsq;
  */
 @Component
 public interface SzyzsqDao extends CrudRepository<Szyzsq, Long> {
-
  	@Query("select a from Szyzsq a where a.frsfzh = ?1")
 	public List<Szyzsq> findByFrsfzh(String frsfzh);
 }
