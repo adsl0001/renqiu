@@ -5,16 +5,18 @@
     <userTask id="zonghe_start" name="四证办理登记" activiti:assignee="#{assignee}" activiti:formKey="/szyzsq/inputApply"></userTask>
     <userTask id="usertask4" name="收集相关材料及代收费" activiti:exclusive="false" activiti:assignee="#{assignee}" activiti:formKey="/szyzsq/sjcl"></userTask>
     <userTask id="usertask10" name="申请人提交公章" activiti:assignee="#{assignee}" activiti:formKey="/szyzsq/view"></userTask>
-    <userTask id="usertask11" name="印章刻制处办理" activiti:assignee="#{assignee}" activiti:formKey="/szyzsq/view"></userTask>
+    <userTask id="usertask11" name="印章刻制处办理" activiti:assignee="#{assignee}" activiti:dueDate="${dueDate.day(2)}" activiti:formKey="/szyzsq/view"></userTask>
     <sequenceFlow id="flow15" sourceRef="usertask10" targetRef="usertask12"></sequenceFlow>
-    <userTask id="usertask12" name="质监窗口办理代码证" activiti:assignee="#{assignee}" activiti:formKey="/szyzsq/view"></userTask>
+    <userTask id="usertask12" name="质监窗口办理代码证" activiti:assignee="#{assignee}" activiti:dueDate="${dueDate.day(2)}" activiti:formKey="/szyzsq/view"></userTask>
     <sequenceFlow id="flow16" sourceRef="usertask11" targetRef="usertask12"></sequenceFlow>
-    <userTask id="usertask13" name="国税窗口办理" activiti:assignee="#{assignee}" activiti:formKey="/szyzsq/view"></userTask>
-    <userTask id="usertask14" name="地税窗口办理" activiti:assignee="#{assignee}" activiti:formKey="/szyzsq/view"></userTask>
+    <userTask id="usertask13" name="国税窗口办理" activiti:assignee="#{assignee}" activiti:dueDate="${dueDate.day(1)}" activiti:formKey="/szyzsq/view"></userTask>
+    <userTask id="usertask14" name="地税窗口办理" activiti:assignee="#{assignee}" activiti:dueDate="${dueDate.day(1)}" activiti:formKey="/szyzsq/view"></userTask>
     <endEvent id="endevent4" name="End"></endEvent>
     <exclusiveGateway id="exclusivegateway1" name="Exclusive Gateway"></exclusiveGateway>
     <userTask id="gongshang_2" name="工商审核未通过" activiti:assignee="#{assignee}" activiti:formKey="/szyzsq/view"></userTask>
-    <userTask id="usertask23" name="办理营业执照" activiti:assignee="#{assignee}" activiti:dueDate="${dueDate.day(3)}" activiti:formKey="/szyzsq/view"></userTask>
+    <userTask id="usertask23" name="办理营业执照" activiti:assignee="#{assignee}" activiti:dueDate="${dueDate.day(3)}" activiti:formKey="/szyzsq/view">
+      <documentation>办理时限3天</documentation>
+    </userTask>
     <sequenceFlow id="flow36" sourceRef="usertask4" targetRef="parallelgateway1"></sequenceFlow>
     <exclusiveGateway id="exclusivegateway2" name="Exclusive Gateway"></exclusiveGateway>
     <sequenceFlow id="flow37" sourceRef="usertask23" targetRef="parallelgateway1"></sequenceFlow>

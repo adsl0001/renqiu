@@ -91,7 +91,7 @@ public final class DateUtil {
      * @version 1.0, 2013-11-13
      * @since WorkRecordManage 1.0
      */
-    public static int daysBetween(Date early, Date late) {
+    public static long daysBetween(Date early, Date late) {
 
         java.util.Calendar calst = java.util.Calendar.getInstance();
         java.util.Calendar caled = java.util.Calendar.getInstance();
@@ -105,7 +105,7 @@ public final class DateUtil {
         caled.set(java.util.Calendar.MINUTE, 0);
         caled.set(java.util.Calendar.SECOND, 0);
         // 得到两个日期相差的天数
-        int days = ((int) (caled.getTime().getTime() / 1000) - (int) (calst
+        long days = ((long) (caled.getTime().getTime() / 1000) - (long) (calst
                 .getTime().getTime() / 1000)) / 3600 / 24;
         days = Math.abs(days);
         days++;
