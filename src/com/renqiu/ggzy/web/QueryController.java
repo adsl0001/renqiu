@@ -56,5 +56,11 @@ public class QueryController {
 
 	@Autowired
 	protected TaskService taskService;
- 
+	@RequestMapping(value={"queryProcessInfo"})
+	public ModelAndView queryProcessInfo()
+	{
+		ModelAndView view = new ModelAndView("query/queryProcessInfo");
+		
+		return view ;
+	}
 }

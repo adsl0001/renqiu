@@ -40,7 +40,7 @@ $(function() {
 				content: {
 					type: 'text',
 					text: function() {
-						return "欢迎使用";
+							return $('#welcome').html();
 					}
 				}
 			}   ]
