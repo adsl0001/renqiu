@@ -49,4 +49,12 @@
 			<li><a rel='workflow/model/list'>模型工作区</a></li>
 		</ul>
 	</li>
+	<li>
+		<a rel='#'>材料列表查询</a>
+		<ul>
+			<li><a rel='szyzsq/gsj.jsp'>工商局需要准备材料</a></li>
+			<li><a rel='szyzsq/gzd'>告知单</a></li>
+			<li><a rel='szyzsq/clml'>四证联办材料列表</a></li>
+		</ul>
+	</li>
 </ul>
