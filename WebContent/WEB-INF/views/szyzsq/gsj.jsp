@@ -33,14 +33,17 @@ div.WordSection1
 	{page:WordSection1;}
 -->
 </style>
+<style media=print type="text/css">   
+.noprint{visibility:hidden}   
+</style>   
 
 </head>
 
 <body bgcolor=white lang=ZH-CN style='text-justify-trim:punctuation'>
 
-<div class=WordSection1>
-
-<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width=1163
+<div class=WordSection1 >
+<p class="noprint"><input style="float:right" type="button" onclick="window.print()" value="打印该页内容"></p>
+<table  class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width=1163
  style='width:872.0pt;margin-left:.25pt;border-collapse:collapse'>
  <tr style='height:30.75pt'>
   <td width=1163 nowrap colspan=5 style='width:872.0pt;padding:0cm 5.4pt 0cm 5.4pt;
