@@ -70,24 +70,7 @@ public class SzyzsqController {
 		model.addAttribute("szyssq", new Szyzsq());
 		return "/szyzsq/apply";
 	}
-//	@RequestMapping(value = "gsj")
-//	public String gsjList(Model model, HttpSession session) {
-//		User user = UserUtil.getUserFromSession(session);
-//		// 用户未登录不能操作，实际应用使用权限框架实现，例如Spring Security、Shiro等
-//		if (user == null || StringUtils.isBlank(user.getId())) {
-//			return "redirect:/login?timeout=true";
-//		}
-//		return "/szyzsq/gsj";
-//	}
-//	@RequestMapping(value="gzd")
-//	public String gzdList(Model model, HttpSession session){
-//		User user = UserUtil.getUserFromSession(session);
-//		// 用户未登录不能操作，实际应用使用权限框架实现，例如Spring Security、Shiro等
-//		if (user == null || StringUtils.isBlank(user.getId())) {
-//			return "redirect:/login?timeout=true";
-//		}
-//		return "/szyzsq/gzd";
-//	}
+
 	/**
 	 * 录入申请信息，或者跳转到某步流程节点继续流转
 	 * 
