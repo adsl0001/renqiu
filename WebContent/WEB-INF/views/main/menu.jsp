@@ -4,7 +4,6 @@
 	<li><a rel="szyzsq/apply">四证办理受理</a></li>
 	<li><a rel="szyzsq/todoList">待办任务</a></li>
 	<li><a rel="szyzsq/finishedList">已结束流程</a></li>
-	<li><a rel="szyzsq/gsj.jsp">gsj</a></li>
 <!-- 	<li> -->
 <!-- 		<a rel="#">请假（普通表单）</a> -->
 <!-- 		<ul> -->
