@@ -44,8 +44,6 @@
 		<a rel='#'>统计分析</a>
 		<ul>
 			<li><a rel='query/queryProcessInfo'>流程信息统计</a></li>
-			<li><a rel='workflow/processinstance/running'>运行中流程</a></li>
-			<li><a rel='workflow/model/list'>模型工作区</a></li>
 		</ul>
 	</li>
 	<li>
