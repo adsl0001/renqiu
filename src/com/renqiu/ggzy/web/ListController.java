@@ -35,7 +35,6 @@ public class ListController {
 		if (user == null || StringUtils.isBlank(user.getId())) {
 			return "redirect:/login?timeout=true";
 		}
-		model.addAttribute("szyssq", new Szyzsq());
 		return "/szyzsq/gsj";
 	}
 	@RequestMapping(value={"gzd",""})
@@ -47,5 +46,14 @@ public class ListController {
 		}
 		model.addAttribute("szyssq", new Szyzsq());
 		return "/szyzsq/gzd";
+	}
+	@RequestMapping(value={"clml",""})
+	public String clmlList(Model model, HttpSession session){
+		User user = UserUtil.getUserFromSession(session);
+		// 用户未登录不能操作，实际应用使用权限框架实现，例如Spring Security、Shiro等
+		if (user == null || StringUtils.isBlank(user.getId())) {
+			return "redirect:/login?timeout=true";
+		}
+		return "/szyzsq/clml";
 	}
 }
