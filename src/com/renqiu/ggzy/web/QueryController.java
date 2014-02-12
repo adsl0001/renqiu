@@ -95,20 +95,25 @@ public class QueryController {
 		Date startDate=  null;
 		if (StringUtils.isNotBlank(startTime) ) {
 			startDate = DateUtil.convertStringToDate(startTime,
-					DateUtil.STANDARD_DATE_FORMAT, new Date());
-			finishedHistoricProcessInstanceQuery = finishedHistoricProcessInstanceQuery
-					.finishedAfter(startDate);
-			unfinishedHistoricProcessInstanceQuery = unfinishedHistoricProcessInstanceQuery
-					.finishedAfter(startDate);
+					DateUtil.STANDARD_DATE_FORMAT, null);
+			if (startDate!=null) {
+				finishedHistoricProcessInstanceQuery = finishedHistoricProcessInstanceQuery
+						.finishedAfter(startDate);
+				unfinishedHistoricProcessInstanceQuery = unfinishedHistoricProcessInstanceQuery
+						.finishedAfter(startDate);
+			}
 		}
 		Date endDate = null ;
 		if ( StringUtils.isNotBlank(endTime)) {
 			endDate = DateUtil.convertStringToDate(endTime,
-					DateUtil.STANDARD_DATE_FORMAT, new Date());
-			finishedHistoricProcessInstanceQuery = finishedHistoricProcessInstanceQuery
-					.finishedBefore(endDate);
-			unfinishedHistoricProcessInstanceQuery = unfinishedHistoricProcessInstanceQuery
-					.finishedBefore(endDate);
+					DateUtil.STANDARD_DATE_FORMAT,null);
+			if (endDate!=null) {
+				finishedHistoricProcessInstanceQuery = finishedHistoricProcessInstanceQuery
+						.finishedBefore(endDate);
+				unfinishedHistoricProcessInstanceQuery = unfinishedHistoricProcessInstanceQuery
+						.finishedBefore(endDate);
+			}
+			
 		}
 		running = processInstanceQuery.processDefinitionKey(this.processDefKey)
 				.active().count();
