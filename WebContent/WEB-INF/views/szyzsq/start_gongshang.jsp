@@ -118,7 +118,7 @@
 			<tr>
 				<td>&nbsp;</td>
 				<td>
-					<button type="submmit">转交下一步</button>
+					<button type="submit">转交下一步</button>
 				</td>
 			</tr>
 		</table>

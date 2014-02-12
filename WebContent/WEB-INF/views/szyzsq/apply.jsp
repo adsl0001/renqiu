@@ -40,7 +40,7 @@
 			success: function(data){
 				 if (data.length == 0) {
                      $('#historyProcess').empty();
-                     $('#historyProcess').html('未查询到办理记录，您可以<button type="submmit">启动新流程</button>。');
+                     $('#historyProcess').html('未查询到办理记录，您可以<input type="submit" value="启动新流程"></input>。');
                  }else{
                 	 var dblc = $('#historyProcess');
                 	 dblc.empty();
@@ -73,7 +73,7 @@
 						 
 					});	
                 	contextHtml+='</tbody>	</table>';			
-                	contextHtml+='<p>查询到未办理完成的流程，您可以<button type="submmit">启动新的受理流程</button>或继续办理以前没有完成的流程。</p>'
+                	contextHtml+='<p>查询到未办理完成的流程，您可以<button type="submit">启动新的受理流程</button>或继续办理以前没有完成的流程。</p>'
                 	 dblc.html(contextHtml);
                  
                 		// 跟踪
