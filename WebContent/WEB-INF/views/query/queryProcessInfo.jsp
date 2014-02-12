@@ -27,10 +27,11 @@
 	<script src="${ctx }/js/common/plugins/html/jquery.outerhtml.js" type="text/javascript"></script>
 	<script src="${ctx }/js/module/activiti/workflow.js" type="text/javascript"></script>
 	<script type="text/javascript">
-	$(function() {
-		// 跟踪
-	    $('.trace').click(graphTrace);
-	});
+	    $(function() {
+	    	$('#startTime,#endTime').datepicker({
+	    		 showButtonPanel: true 
+	        });
+	    });
 	</script>
 </head>
 
@@ -47,13 +48,13 @@
 	
 	<hr class="barTitleHr"></hr>
 	<div id="conditions" class=""  style="display:block">
-		<form id="queryConditions" >
+		<form id="queryConditions"  action="${ctx}/query/queryProcessInfo" class="form-horizontal" >
 			<div  > 
 				<div  > 
 					<div  >时间范围：
-					<input id="startTime" name="startTime" type="text" class="Wdate" style="width: 160px" value=""/>至
-					<input id="endTime" name="endTime" type="text" style="width: 160px" class="Wdate" value=""/>
-					<button id="query_button" type="button" onclick="query();">查询</button>
+					<input id="startTime" name="startTime" type="text"   style="width: 160px" value="${startTime }"/>至
+					<input id="endTime" name="endTime" type="text" style="width: 160px" class="Wdate" value="${endTime }"/>
+					<button id="query_button" type="submit"  >查询</button>
 					</div>
 						
 				</div>
@@ -65,7 +66,7 @@
          <TABLE>
          <tr><TD>办结量:${bjl }</TD></tr>
          <tr><TD>办结率:${bjlv }%</TD></tr>
-         <tr><TD>运行中的流程:${running}</TD></tr>
+         <tr><TD>运行中的流程:${running }</TD></tr>
          <tr><TD>流程总数:${all }</TD></tr>
          </TABLE>
     </div>
