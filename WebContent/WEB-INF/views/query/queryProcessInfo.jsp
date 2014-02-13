@@ -41,7 +41,7 @@
 	<div class="  ">
         <div class=" ui-widget-header ui-corner-all">
 			<a href="javascript:;" onfocus="this.blur();"></a>
-			<span>流程信息统计</span>
+			 <h5></h5>流程信息统计 
 			<a id="displayHidden" class="right" onclick="this.blur();" href= "javascript:;">隐藏查询条件</a>
 		</div>
 	
@@ -66,11 +66,10 @@
 	</fieldset>
 	</div>
 <div id="welcome"  class="box">
-		  办结量:${bjl } <br>
+	  办结量:${bjl } <br>
           办结率:${bjlv }% <br>
           运行中的流程:${running } <br>
           流程总数:${all } <br>
-        
 
 <!--          <TABLE> -->
 <%--          <tr><TD>办结量:${bjl }</TD></tr> --%>

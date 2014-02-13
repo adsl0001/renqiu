@@ -89,7 +89,7 @@
 			</tr>
 			<tr>
 			<div id="reasonDiv"><td>办理结果:</td>
-				<td><select style="width: 300px;" id="reason" name = "commentMessage" placeholder="审批意见"> <option>材料不全</option>
+				<td><select style="width: 300px;" id="reason" name = "commentMessage" placeholder="审批意见">  
 				<option>同意受理</option>
 				<option>材料不全</option>
 				<option>材料不全等其他原因</option>
