@@ -10,6 +10,9 @@
 			location.href = '${ctx}/login?timeout=true';
 		}
 	</script>
+	<META HTTP-EQUIV="pragma" CONTENT="no-cache"> 
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"> 
+<META HTTP-EQUIV="expires" CONTENT="Wed, 26 Feb 1997 08:21:57 GMT">
 	<title>工商窗口办理</title>
 	<%@ include file="/common/meta.jsp" %>
     <%@ include file="/common/include-base-styles.jsp" %>
@@ -129,7 +132,7 @@
 			<tr>
 				<td>&nbsp;</td>
 				<td>
-					<button type="submit">转交下一步</button>
+										<input type = "button"	onclick="this.disabled=true;this.form.submit()" value="提交"/> 
 				</td>
 			</tr>
 		</table>

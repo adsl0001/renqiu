@@ -65,13 +65,19 @@
 	</div>
 	</fieldset>
 	</div>
-<div id="welcome" >
-         <TABLE>
-         <tr><TD>办结量:${bjl }</TD></tr>
-         <tr><TD>办结率:${bjlv }%</TD></tr>
-         <tr><TD>运行中的流程:${running }</TD></tr>
-         <tr><TD>流程总数:${all }</TD></tr>
-         </TABLE>
+<div id="welcome"  class="box">
+		  办结量:${bjl } <br>
+          办结率:${bjlv }% <br>
+          运行中的流程:${running } <br>
+          流程总数:${all } <br>
+        
+
+<!--          <TABLE> -->
+<%--          <tr><TD>办结量:${bjl }</TD></tr> --%>
+<%--          <tr><TD>办结率:${bjlv }%</TD></tr> --%>
+<%--          <tr><TD>运行中的流程:${running }</TD></tr> --%>
+<%--          <tr><TD>流程总数:${all }</TD></tr> --%>
+<!--          </TABLE> -->
     </div>
 <script type="text/javascript">
 	//显示或隐藏查询条件

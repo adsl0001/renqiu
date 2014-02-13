@@ -6,7 +6,7 @@
 <head>
 	<%@ include file="/common/global.jsp"%>
 	 
-	<title>四证联办公示</title>
+	<title>四证联办信息公示</title>
 	<%@ include file="/common/meta.jsp" %>
     <%@ include file="/common/include-base-styles.jsp" %>
     <%@ include file="/common/include-jquery-ui-theme.jsp" %>
@@ -28,74 +28,127 @@
  <style>
   .toggler { width: 500px; height: 200px; }
   #button { padding: .5em 1em; text-decoration: none; }
-  #effect { width: 800px; height: 400px; padding: 0.4em; position: relative; }
+  #effect { width: 790px; height: 390px; padding: 0.4em; position: relative; }
   #effect h3 { margin: 0; padding: 0.4em; text-align: center; }
+  #caption  { width: 800px; height: 400px; padding: 0.4em; position: relative; }
+  #caption h3 { margin: 0; padding: 0.4em; text-align: center; }
   </style>
   <script>
   $(function() {
-    // run the currently selected effect
+	 //初始化数据
+	var currentPage = 0;
+    var pageSize = 20;
+   	function initData(p,ps){
+		$.ajax({url: ctx+"/query/queryPublic",
+			data:"p="+p+"&ps="+ps,
+			success: function(data){
+				var page = data.page;
+				currentPage = page.hasNext?++currentPage:0;
+			
+               	 var dblc = $('#effect');
+               	 dblc.empty();
+               	 var contextHtml= '';
+               	//表头
+               	contextHtml += '<table width="100%" class="need-border"> ';
+               	contextHtml+=' <thead  > <tr>';
+               	contextHtml+='<th ><center>申报时间</center></th>';
+               	contextHtml+=' 	<th><center>流水号</center></th>';
+               	contextHtml+=' <th><center>办理事项</center></th>';
+               	contextHtml+=' 	<th><center>流程状态</center></th>';
+               	contextHtml+='<th><center>当前环节</center></th>';
+               	contextHtml+='<th><center>是否超期</center></th>';
+               	contextHtml+='</tr> </thead>';	
+               	contextHtml+='<tbody>';			
+               	$.each(page.result, function() {
+               		contextHtml+='<tr>';
+               		contextHtml+='<td><center>'+this.sbsj+'</center></td>';
+               		contextHtml+='<td><center>'+this.lsh+'</center></td>';
+               		contextHtml+='<td><center>'+'四证联办流程'+'</center></td>';
+               		contextHtml+='<td><center>'+this.lczt+' </center></td>';
+               		contextHtml+='<td><center>'+this.dqhj+'</center></td>';
+               		contextHtml+='<td><center>'+this.sfcq+'</center></td>';
+				});	
+               	contextHtml+='</tbody>	</table>';			
+               	 dblc.html(contextHtml);
+			}
+		});
+	}
+    
     function runEffect() {
-      // get effect type from
-      //var selectedEffect = $( "#effectTypes" ).val();
  	  var selectedEffect = 'blind';
-      // most effect types need no options passed by default
       var options = {};
-      // some effects have required parameters
-//       if ( selectedEffect === "scale" ) {
-//         options = { percent: 100 };
-//       } else if ( selectedEffect === "size" ) {
-//         options = { to: { width: 280, height: 185 } };
-//       }
- 
-      // run the effect
       $( "#effect" ).show( selectedEffect, options, 500, callback );
     };
- 
     //callback function to bring a hidden box back
     function callback() {
-      setTimeout(function() {
-        $( "#effect:visible" ).removeAttr( "style" ).fadeOut();
-      }, 5000 );
+      setTimeout( reOpen, 5000 );
     };
- 
-    // set effect from select menu value
-    $( "#button" ).click(function() {
-      runEffect();
-      return false;
-    });
- 
+
+ 	function reOpen(){
+ 		$( "#effect:visible" ).removeAttr( "style" ).fadeOut();
+ 	    //重新打开页面
+ 	    if(currentPage==0){initData(++currentPage,pageSize);};
+ 	    runEffect();
+ 	};
+ 	initData(++currentPage,pageSize);
     $( "#effect" ).hide();
+    runEffect();
   });
   </script>
 </head>
 <body>
  
 <div class="toggler">
-  <div id="effect" class="ui-widget-content ui-corner-all">
-    <h3 class="ui-widget-header ui-corner-all">Show</h3>
-    <p>
-      Etiam libero neque, luctus a, eleifend nec, semper at, lorem. Sed pede. Nulla lorem metus, adipiscing ut, luctus sed, hendrerit vitae, mi.
-    </p>
+  <div id ="caption" class="ui-widget-content ui-corner-all">
+    <h3 class="ui-widget-header ui-corner-all">企业注册四证联办监管系统数据公示</h3>
+
+     <div id="effect" >
+    	<table width="100%" class="need-border">
+		<thead>
+			<tr>
+				<th>申报时间</th>
+				<th>流水号</th>
+				<th>办理事项</th>
+				<th>流程状态</th>
+				<th>环节</th>
+				<th>是否超期</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach items="${page.result }" var="szyzsq">
+				<c:set var="hpi" value="${szyzsq.historicProcessInstance }" />
+				<tr >
+				 <td>${szyzsq.sqbh }</td>
+					<td>${szyzsq.frxm }</td>
+					<td><fmt:formatDate value="${hpi.startTime }" pattern="yyyy-MM-dd hh:mm:ss" /></td>
+					<td><fmt:formatDate value="${hpi.endTime }" pattern="yyyy-MM-dd hh:mm:ss" /></td>
+					<td>${hpi.deleteReason }</td>
+					<td><b title='流程版本号'>V: ${szyzsq.processDefinition.version }</b></td>
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table>
+	</div>
   </div>
 </div>
  
-<select name="effects" id="effectTypes">
-  <option value="blind">Blind</option>
-  <option value="bounce">Bounce</option>
-  <option value="clip">Clip</option>
-  <option value="drop">Drop</option>
-  <option value="explode">Explode</option>
-  <option value="fold">Fold</option>
-  <option value="highlight">Highlight</option>
-  <option value="puff">Puff</option>
-  <option value="pulsate">Pulsate</option>
-  <option value="scale">Scale</option>
-  <option value="shake">Shake</option>
-  <option value="size">Size</option>
-  <option value="slide">Slide</option>
-</select>
+<!-- <select name="effects" id="effectTypes"> -->
+<!--   <option value="blind">Blind</option> -->
+<!--   <option value="bounce">Bounce</option> -->
+<!--   <option value="clip">Clip</option> -->
+<!--   <option value="drop">Drop</option> -->
+<!--   <option value="explode">Explode</option> -->
+<!--   <option value="fold">Fold</option> -->
+<!--   <option value="highlight">Highlight</option> -->
+<!--   <option value="puff">Puff</option> -->
+<!--   <option value="pulsate">Pulsate</option> -->
+<!--   <option value="scale">Scale</option> -->
+<!--   <option value="shake">Shake</option> -->
+<!--   <option value="size">Size</option> -->
+<!--   <option value="slide">Slide</option> -->
+<!-- </select> -->
  
-<a href="#" id="button" class="ui-state-default ui-corner-all">Run Effect</a>
+<!-- <a href="#" id="button" class="ui-state-default ui-corner-all">Run Effect</a> -->
  
  
 </body>

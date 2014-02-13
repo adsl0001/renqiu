@@ -3,7 +3,6 @@
 	<li class="topfirst"><a rel="main/welcome">首页</a></li>
 	<li><a rel="szyzsq/apply">四证办理受理</a></li>
 	<li><a rel="szyzsq/todoList">待办任务</a></li>
-	<li><a rel="szyzsq/finishedList">已结束流程</a></li>
 <!-- 	<li> -->
 <!-- 		<a rel="#">请假（普通表单）</a> -->
 <!-- 		<ul> -->
@@ -44,6 +43,7 @@
 		<a rel='#'>统计分析</a>
 		<ul>
 			<li><a rel='query/queryProcessInfo'>流程信息统计</a></li>
+			<li><a rel="szyzsq/finishedList">已结束流程</a></li>
 		</ul>
 	</li>
 	<li>
