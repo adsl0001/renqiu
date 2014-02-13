@@ -58,7 +58,6 @@
 					<input id="endTime" name="endTime" type="text" style="width: 160px" class="Wdate" value="${endTime }"/>
 					<button id="query_button" type="submit"  >查询</button>
 					</div>
-						
 				</div>
 			</div>
 		</form>

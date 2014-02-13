@@ -26,25 +26,23 @@
 
 <body>
  <style>
-  .toggler { width: 500px; height: 200px; }
-  #button { padding: .5em 1em; text-decoration: none; }
-  #effect { width: 790px; height: 390px; padding: 0.4em; position: relative; }
+/*  .toggler { width: 500px; height: 200px; } */
+  #effect { width: 100% ; height: 100%; padding: 0.4em; position: relative; }
   #effect h3 { margin: 0; padding: 0.4em; text-align: center; }
-  #caption  { width: 800px; height: 400px; padding: 0.4em; position: relative; }
+  #caption  { width: 100%; height: 100%; padding: 0.4em; position: relative; }
   #caption h3 { margin: 0; padding: 0.4em; text-align: center; }
   </style>
   <script>
   $(function() {
 	 //初始化数据
 	var currentPage = 0;
-    var pageSize = 20;
+    var pageSize = ${pageSize};
    	function initData(p,ps){
 		$.ajax({url: ctx+"/query/queryPublic",
 			data:"p="+p+"&ps="+ps,
 			success: function(data){
 				var page = data.page;
-				currentPage = page.hasNext?++currentPage:0;
-			
+				currentPage = page.hasNext&&  currentPage != 1 ?++currentPage:0;
                	 var dblc = $('#effect');
                	 dblc.empty();
                	 var contextHtml= '';
@@ -87,7 +85,7 @@
  	function reOpen(){
  		$( "#effect:visible" ).removeAttr( "style" ).fadeOut();
  	    //重新打开页面
- 	    if(currentPage==0){initData(++currentPage,pageSize);};
+ 	    initData(++currentPage,pageSize); 
  	    runEffect();
  	};
  	initData(++currentPage,pageSize);

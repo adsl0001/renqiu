@@ -21,6 +21,7 @@ import org.activiti.engine.runtime.ProcessInstanceQuery;
 import org.activiti.engine.task.Task;
 import org.activiti.spring.annotations.TaskId;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,7 +66,7 @@ public class QueryController {
 	@Autowired
 	protected HistoryService historyService;
 	@Autowired
-	private QueryManager queryManager ;
+	private QueryManager queryManager;
 	private static final String processDefKey = "renqiu_szyzsq";
 
 	// @RequestMapping(value={"queryProcessInfo"})
@@ -145,8 +146,8 @@ public class QueryController {
 	 * @param request
 	 * @return
 	 */
-	@RequestMapping(value="queryPublic")
-	 @ResponseBody
+	@RequestMapping(value = "queryPublic")
+	@ResponseBody
 	public Map<String, Object> queryPublic(HttpSession session,
 			HttpServletRequest request) {
 		Page<PublicInfo> page = new Page<PublicInfo>(PageUtil.PAGE_SIZE);
@@ -155,7 +156,7 @@ public class QueryController {
 		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>(1);
 		Map<String, Object> map = new HashMap<String, Object>(1);
 		map.put("page", page);
-		return map; 
+		return map;
 	}
 
 	/**
@@ -163,11 +164,15 @@ public class QueryController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "public")
-	public ModelAndView publicInfo(HttpSession session,
-			HttpServletRequest request) {
+	@RequestMapping(value = "public/{pageSize}")
+	public ModelAndView publicInfo(@PathVariable("pageSize") String pageSize,
+			HttpSession session, HttpServletRequest request) {
+		int iPageSize = 20;
+		if (NumberUtils.isNumber(pageSize)) {
+			iPageSize=  NumberUtils.toInt(pageSize);
+		}
 		ModelAndView modelAndView = new ModelAndView("query/public");
-
+		modelAndView.addObject("pageSize",iPageSize);
 		return modelAndView;
 	}
 
