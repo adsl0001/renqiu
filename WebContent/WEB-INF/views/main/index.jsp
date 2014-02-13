@@ -15,7 +15,7 @@ PropertyFileUtil.init();
 		}
 	</script>
 	<%@ include file="/common/meta.jsp" %>
-    <title>四证联办监察系统</title>
+    <title>企业注册四证联办监管系统</title>
     <%@ include file="/common/include-base-styles.jsp" %>
 	<%@ include file="/common/include-jquery-ui-theme.jsp" %>
     <link rel="stylesheet" type="text/css" href="${ctx }/css/menu.css" />

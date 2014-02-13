@@ -45,7 +45,7 @@ public class MainController {
 				.processDefinitionKey(processDefKey).finished().count();
 		all = running + finished;
 		bjl = finished;
-		double bjlv = all != 0 ? NumberUtil.round(finished / all * 100, 3) : 0;
+		double bjlv = all != 0 ? NumberUtil.round((double)finished / all * 100, 3) : 0;
 		view.addObject("bjl", bjl);
 		view.addObject("bjlv", bjlv);
 		view.addObject("running", running);
