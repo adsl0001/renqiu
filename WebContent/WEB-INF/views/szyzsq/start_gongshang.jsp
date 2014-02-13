@@ -66,6 +66,11 @@
 				${szyzsq.frxm}
 				<input id="frxm" name="frxm" type="hidden" value ="${szyzsq.frxm}" ></input>
 				</td></tr>
+			<tr><td>公司核准名称：</td>
+			<td>
+			${szyzsq.qymc}
+			<input id="qymc" name="qymc" type="hidden" value ="${szyzsq.qymc}" ></input>
+			</td></tr>	
 			<tr>
 				<td>联系方式：</td>
 				<td>
@@ -81,7 +86,13 @@
 			</tr>
 			<tr>
 			<div id="reasonDiv"><td>办理结果:</td>
-				<td><textarea  rows="2" cols="2" id="reason" name="commentMessage" placeholder="审批意见"></textarea></td>
+				<td><select style="width: 300px;" id="reason" name = "commentMessage" placeholder="审批意见"> <option>材料不全</option>
+				<option>同意受理</option>
+				<option>材料不全</option>
+				<option>材料不全等其他原因</option>
+				</select>
+<!-- 				<textarea  rows="2" cols="2" id="reason" name="commentMessage" placeholder="审批意见"></textarea> -->
+				</td>
 			</div>
 			 </tr>
 			  <tr>

@@ -42,12 +42,12 @@ PropertyFileUtil.init();
 	<div style="padding-left:5px; font-size: 16px; margin-top: 1px;">
        	<table id="topTable" style="padding: 0px;margin: 0px;margin-top: -5px" width="100%">
        		<tr>
-       			<td width="40px">
-       				<img src="${ctx }/images/logo.png" height="48" align="top"  style="margin-top:5px" />
-       			</td>
-       			<td>
+<!--        			<td width="40px"> -->
+<%--        				<img src="${ctx }/images/logo.png" height="48" align="top"  style="margin-top:5px" /> --%>
+<!--        			</td> -->
+<!--        			<td> -->
 <!--        				<span style="font-size: 17px;color:#FFFF33">Activiti<br/>演示系统</span><br/> -->
-       			</td>
+<!--        			</td> -->
        			<td>
        				<div style="float:right; color: #fff;font-size: 12px;margin-top: 2px">
 		        		<div>

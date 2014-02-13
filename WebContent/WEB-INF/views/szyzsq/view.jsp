@@ -74,6 +74,13 @@
 				</td>
 			</tr>
 			<tr>
+				<td>公司核准名称：</td>
+				<td>
+				${szyzsq.qymc}
+				<input id="qymc" name="qymc" type="hidden" value ="${szyzsq.qymc}" ></input>
+				</td>
+			</tr>
+			<tr>
 			<div id="reasonDiv"><td>办理结果:</td>
 				<td><textarea  rows="2" cols="2"  id="reason" name="commentMessage" placeholder="审批意见"></textarea></td>
 			</div>

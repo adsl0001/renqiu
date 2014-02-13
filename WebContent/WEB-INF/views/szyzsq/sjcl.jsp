@@ -125,7 +125,7 @@
 			<tr>
 				<td>&nbsp;</td>
 				<td>
-					<button type="submit">提交</button>
+					<button type="submmit">提交</button>
 				</td>
 			</tr>
 		</table>

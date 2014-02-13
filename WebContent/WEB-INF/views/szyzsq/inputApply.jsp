@@ -80,7 +80,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td>企业名称：</td>
+				<td>公司核准名称：</td>
 				<td>
 				<input id="qymc" name="qymc" type="text" value ="${szyzsq.qymc}" ></input>
 				</td>

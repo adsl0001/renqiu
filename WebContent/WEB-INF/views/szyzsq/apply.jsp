@@ -40,7 +40,7 @@
 			success: function(data){
 				 if (data.length == 0) {
                      $('#historyProcess').empty();
-                     $('#historyProcess').html('未查询到办理记录，您可以<input type="submit" value="启动新流程"></input>。');
+                     $('#historyProcess').html('未查询到办理记录，您可以<button type="submit">启动新流程</button>。');
                  }else{
                 	 var dblc = $('#historyProcess');
                 	 dblc.empty();

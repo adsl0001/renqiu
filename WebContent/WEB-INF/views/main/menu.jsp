@@ -41,6 +41,12 @@
 <!--         </ul> -->
 <!--     </li> -->
 	<li>
+		<a rel='#'>统计分析</a>
+		<ul>
+			<li><a rel='query/queryProcessInfo'>流程信息统计</a></li>
+		</ul>
+	</li>
+	<li>
 		<a rel='#'>流程管理</a>
 		<ul>
 			<li><a rel='workflow/process-list'>流程定义及部署管理</a></li>
