@@ -37,17 +37,19 @@
 
 <body>
 <div class="container showgrid"></div>
-<fieldset>
-<legend></legend>
+
 	<div class="  ">
-        <div class=" ">
+        <div class=" ui-widget-header ui-corner-all">
 			<a href="javascript:;" onfocus="this.blur();"></a>
-			<span>流程信息统计</span>
+			 <h5></h5>流程信息统计 
 			<a id="displayHidden" class="right" onclick="this.blur();" href= "javascript:;">隐藏查询条件</a>
 		</div>
 	
 	<hr class="barTitleHr"></hr>
+
 	<div id="conditions" class=""  style="display:block">
+	 	<fieldset>
+		<legend></legend>
 		<form id="queryConditions"  action="${ctx}/query/queryProcessInfo" class="form-horizontal" >
 			<div  > 
 				<div  > 
@@ -61,14 +63,20 @@
 			</div>
 		</form>
 	</div>
-	</div></fieldset>
-<div id="welcome" >
-         <TABLE>
-         <tr><TD>办结量:${bjl }</TD></tr>
-         <tr><TD>办结率:${bjlv }%</TD></tr>
-         <tr><TD>运行中的流程:${running }</TD></tr>
-         <tr><TD>流程总数:${all }</TD></tr>
-         </TABLE>
+	</fieldset>
+	</div>
+<div id="welcome"  class="box">
+	  办结量:${bjl } <br>
+          办结率:${bjlv }% <br>
+          运行中的流程:${running } <br>
+          流程总数:${all } <br>
+
+<!--          <TABLE> -->
+<%--          <tr><TD>办结量:${bjl }</TD></tr> --%>
+<%--          <tr><TD>办结率:${bjlv }%</TD></tr> --%>
+<%--          <tr><TD>运行中的流程:${running }</TD></tr> --%>
+<%--          <tr><TD>流程总数:${all }</TD></tr> --%>
+<!--          </TABLE> -->
     </div>
 <script type="text/javascript">
 	//显示或隐藏查询条件

@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
 	<%@ include file="/common/global.jsp"%>
-	<title>登录页</title>
+	<title>企业注册四证联办监管系统登录</title>
 	<script>
 		var logon = ${not empty user};
 		if (logon) {
@@ -53,7 +53,7 @@
         </c:if>
 
 		<div style="text-align: center;">
-            <h2>四证一章联办流程</h2>
+            <h2>企业注册四证联办监管系统</h2>
 		</div>
 		<hr />
 		<form action="${ctx }/user/logon" method="get">
@@ -69,7 +69,7 @@
 				<tr>
 					<td>&nbsp;</td>
 					<td>
-						<button type="submit">登录系统</button>
+						<button type="submit">登录系统</button> <a href="${ctx }/query/public" target="blank">查看公示信息</a>
 					</td>
 				</tr>
 			</table>

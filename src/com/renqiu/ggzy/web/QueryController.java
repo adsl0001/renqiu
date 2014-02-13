@@ -42,7 +42,9 @@ import com.renqiu.demo.activiti.util.Page;
 import com.renqiu.demo.activiti.util.PageUtil;
 import com.renqiu.demo.activiti.util.UserUtil;
 import com.renqiu.demo.activiti.util.Variable;
+import com.renqiu.ggzy.entity.PublicInfo;
 import com.renqiu.ggzy.entity.Szyzsq;
+import com.renqiu.ggzy.service.QueryManager;
 import com.renqiu.ggzy.service.SzyzsqManager;
 import com.renqiu.ggzy.util.DateUtil;
 import com.renqiu.ggzy.util.NumberUtil;
@@ -62,6 +64,8 @@ public class QueryController {
 	private RuntimeService runtimeService;
 	@Autowired
 	protected HistoryService historyService;
+	@Autowired
+	private QueryManager queryManager ;
 	private static final String processDefKey = "renqiu_szyzsq";
 
 	// @RequestMapping(value={"queryProcessInfo"})
@@ -92,36 +96,37 @@ public class QueryController {
 				.processDefinitionKey(processDefKey).finished();
 		unfinishedHistoricProcessInstanceQuery = unfinishedHistoricProcessInstanceQuery
 				.processDefinitionKey(processDefKey).unfinished();
-		Date startDate=  null;
-		if (StringUtils.isNotBlank(startTime) ) {
+		Date startDate = null;
+		if (StringUtils.isNotBlank(startTime)) {
 			startDate = DateUtil.convertStringToDate(startTime,
 					DateUtil.STANDARD_DATE_FORMAT, null);
-			if (startDate!=null) {
+			if (startDate != null) {
 				finishedHistoricProcessInstanceQuery = finishedHistoricProcessInstanceQuery
 						.finishedAfter(startDate);
 				unfinishedHistoricProcessInstanceQuery = unfinishedHistoricProcessInstanceQuery
 						.finishedAfter(startDate);
 			}
 		}
-		Date endDate = null ;
-		if ( StringUtils.isNotBlank(endTime)) {
+		Date endDate = null;
+		if (StringUtils.isNotBlank(endTime)) {
 			endDate = DateUtil.convertStringToDate(endTime,
-					DateUtil.STANDARD_DATE_FORMAT,null);
-			if (endDate!=null) {
+					DateUtil.STANDARD_DATE_FORMAT, null);
+			if (endDate != null) {
 				finishedHistoricProcessInstanceQuery = finishedHistoricProcessInstanceQuery
 						.finishedBefore(endDate);
 				unfinishedHistoricProcessInstanceQuery = unfinishedHistoricProcessInstanceQuery
 						.finishedBefore(endDate);
 			}
-			
+
 		}
 		running = processInstanceQuery.processDefinitionKey(this.processDefKey)
 				.active().count();
 		finished = finishedHistoricProcessInstanceQuery.count();
 		unfinished = unfinishedHistoricProcessInstanceQuery.count();
-		all = running + finished ;
+		all = unfinished + finished;
 		bjl = finished;
-		double bjlv = all != 0 ? NumberUtil.round(finished / all * 100, 3) : 0;
+		double bjlv = all != 0 ? NumberUtil.round((double) (finished) / all
+				* 100, 3) : 0;
 		view.addObject("bjl", bjl);
 		view.addObject("bjlv", bjlv);
 		view.addObject("running", running);
@@ -132,6 +137,38 @@ public class QueryController {
 				DateUtil.STANDARD_DATE_FORMAT));
 		return view;
 	}
-	
-	
+
+	/**
+	 * 公示数据
+	 * 
+	 * @param session
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value="queryPublic")
+	 @ResponseBody
+	public Map<String, Object> queryPublic(HttpSession session,
+			HttpServletRequest request) {
+		Page<PublicInfo> page = new Page<PublicInfo>(PageUtil.PAGE_SIZE);
+		int[] pageParams = PageUtil.init(page, request);
+		this.queryManager.queryPublicInfo(page, pageParams);
+		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>(1);
+		Map<String, Object> map = new HashMap<String, Object>(1);
+		map.put("page", page);
+		return map; 
+	}
+
+	/**
+	 * 公示页面
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "public")
+	public ModelAndView publicInfo(HttpSession session,
+			HttpServletRequest request) {
+		ModelAndView modelAndView = new ModelAndView("query/public");
+
+		return modelAndView;
+	}
+
 }
