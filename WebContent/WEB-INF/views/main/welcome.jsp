@@ -34,7 +34,7 @@
 <body style="margin-top: 1em;">
 	<div class="center">
         <div style="text-align: center;">
-            <h3>欢迎访问四证联办监察系统</h3>
+            <h3>欢迎访问企业注册四证联办监管系统</h3>
         </div>
         <div id='portlet-container'></div>
     </div>
