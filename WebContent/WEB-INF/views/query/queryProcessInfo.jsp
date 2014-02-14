@@ -36,9 +36,9 @@
 </head>
 
 <body>
-<div class="container showgrid"></div>
+<!--  <div class="container showgrid"></div>  -->
 
-	<div class="  ">
+	<div>
         <div class=" ui-widget-header ui-corner-all">
 			<a href="javascript:;" onfocus="this.blur();"></a>
 			 <h5></h5>流程信息统计 
@@ -50,26 +50,80 @@
 	<div id="conditions" class=""  style="display:block">
 	 	<fieldset>
 		<legend></legend>
-		<form id="queryConditions"  action="${ctx}/query/queryProcessInfo" class="form-horizontal" >
-			<div  > 
+			<form id="queryConditions"  action="${ctx}/query/queryProcessInfo" class="form-horizontal" >
 				<div  > 
-					<div  >时间范围：
-					<input id="startTime" name="startTime" type="text"   style="width: 160px" value="${startTime }"/>至
-					<input id="endTime" name="endTime" type="text" style="width: 160px" class="Wdate" value="${endTime }"/>
-					<button id="query_button" type="submit"  >查询</button>
+					<div  > 
+						<div>时间范围：
+						<input id="startTime" name="startTime" type="text"   style="width: 160px" value="${startTime }"/>至
+						<input id="endTime" name="endTime" type="text" style="width: 160px" class="Wdate" value="${endTime }"/>
+						<button id="query_button" type="submit"  >查询</button>
+						</div>
 					</div>
-						
 				</div>
-			</div>
-		</form>
-	</div>
-	</fieldset>
+			</form>
+		</fieldset>
 	</div>
 <div id="welcome"  class="box">
-	  办结量:${bjl } <br>
-          办结率:${bjlv }% <br>
-          运行中的流程:${running } <br>
-          流程总数:${all } <br>
+          <font color="red">运行中的流程:${running }</font>
+          <table border="1" style="align:center">
+          	<tr>
+          		<td>工商窗口</td>
+          		<td>质监窗口</td>
+          		<td>国税窗口</td>
+          		<td>地税窗口</td>
+          	</tr>
+          	<tr>
+          		<td>0</td>
+          		<td>0</td>
+          		<td>0</td>
+          		<td>0</td>
+          	</tr>
+          </table>
+          <font color="red">流程总数:${all }</font>
+          <table border="1" style="align:center">
+          	<tr>
+          		<td>工商窗口</td>
+          		<td>质监窗口</td>
+          		<td>国税窗口</td>
+          		<td>地税窗口</td>
+          	</tr>
+          	<tr>
+          		<td>0</td>
+          		<td>0</td>
+          		<td>0</td>
+          		<td>0</td>
+          	</tr>
+          </table>
+          <font color="red">办结量:${bjl }</font>
+          <table border="1">
+          	<tr>
+          		<td>工商窗口</td>
+          		<td>质监窗口</td>
+          		<td>国税窗口</td>
+          		<td>地税窗口</td>
+          	</tr>
+          	<tr>
+          		<td>0</td>
+          		<td>0</td>
+          		<td>0</td>
+          		<td>0</td>
+          	</tr>
+          </table>
+          <font color="red">办结率:${bjlv }%</font>
+          <table border="1">
+          	<tr>
+          		<td>工商窗口</td>
+          		<td>质监窗口</td>
+          		<td>国税窗口</td>
+          		<td>地税窗口</td>
+          	</tr>
+          	<tr>
+          		<td>0</td>
+          		<td>0</td>
+          		<td>0</td>
+          		<td>0</td>
+          	</tr>
+          </table>
 
 <!--          <TABLE> -->
 <%--          <tr><TD>办结量:${bjl }</TD></tr> --%>
