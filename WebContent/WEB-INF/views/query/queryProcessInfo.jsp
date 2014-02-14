@@ -64,6 +64,7 @@
 		</fieldset>
 	</div>
 <div id="welcome"  class=" ">
+<fieldset>
 <%--           <font color="red">运行中的流程:${running }</font> --%>
 <!--           <table border="1" style="align:center"> -->
 <!--           <thead>	<tr> -->
@@ -79,7 +80,9 @@
 <!--           		<td>0</td> -->
 <!--           	</tr> -->
 <!--           </table> -->
-          <font color="red">流程总数:${process_all }</font>
+<div><font color="red">流程总数:${process_all }</font>
+	<fieldset>
+          
           <table border="1" style="align:center">
            <thead>	<tr>
           		<th>工商窗口</th>
@@ -93,8 +96,9 @@
           		<td>${all.guoshui }</td>
           		<td>${all.dishui }</td>
           	</tr>
-          </table>
-          <font color="red">流程办结量:${process_bjl }</font>
+          </table></fieldset></div>
+          <div> <font color="red">流程办结量:${process_bjl }</font><fieldset>
+         
           <table border="1">
            <thead>	<tr>
           		<th>工商窗口</th>
@@ -108,8 +112,10 @@
           		<td>${bjl.guoshui }</td>
           		<td>${bjl.dishui }</td>
           	</tr>
-          </table>
-          <font color="red">流程办结率:${process_bjlv }%</font>
+          </table></fieldset></div>
+          <div><font color="red">流程办结率:${process_bjlv }%</font>
+          <fieldset>
+          
           <table border="1">
            <thead>	<tr>
           		<th>工商窗口</th>
@@ -123,8 +129,8 @@
           		<td>${bjlv.guoshui }%</td>
           		<td>${bjlv.dishui }%</td>
           	</tr>
-          </table>
-
+          </table></fieldset></div>
+</fieldset>
 <!--          <TABLE> -->
 <%--          <tr><TD>办结量:${bjl }</TD></tr> --%>
 <%--          <tr><TD>办结率:${bjlv }%</TD></tr> --%>
