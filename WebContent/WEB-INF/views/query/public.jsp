@@ -35,14 +35,14 @@
   <script>
   $(function() {
 	 //初始化数据
-	var currentPage = 0;
+	var currentPage = 1;
     var pageSize = ${pageSize};
    	function initData(p,ps){
 		$.ajax({url: ctx+"/query/queryPublic",
 			data:"p="+p+"&ps="+ps,
 			success: function(data){
 				var page = data.page;
-				currentPage = page.hasNext&&  currentPage != 1 ?++currentPage:0;
+				currentPage = page.hasNext?++currentPage:1;
                	 var dblc = $('#effect');
                	 dblc.empty();
                	 var contextHtml= '';
@@ -85,10 +85,10 @@
  	function reOpen(){
  		$( "#effect:visible" ).removeAttr( "style" ).fadeOut();
  	    //重新打开页面
- 	    initData(++currentPage,pageSize); 
+ 	    initData(currentPage,pageSize); 
  	    runEffect();
  	};
- 	initData(++currentPage,pageSize);
+ 	initData(currentPage,pageSize);
     $( "#effect" ).hide();
     runEffect();
   });
