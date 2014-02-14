@@ -69,7 +69,7 @@
 				<tr>
 					<td>&nbsp;</td>
 					<td>
-						<button type="submit">登录系统</button> <a href="${ctx }/query/public" target="blank">查看公示信息</a>
+						<button type="submit">登录系统</button> <a href="${ctx }/query/public/30" target="blank">查看公示信息</a>
 					</td>
 				</tr>
 			</table>
