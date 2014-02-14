@@ -147,6 +147,7 @@ public class SzyzsqController {
 		if (!StringUtils.isBlank(input)) {
 			paramMap.put("input", input);
 		}
+		
 		this.szyzsqManager.completeUserTask(szyzsq, user.getId(), taskId,
 				paramMap, assignee, commentMessage);
 		return "redirect:/szyzsq/todoList";
@@ -206,6 +207,12 @@ public class SzyzsqController {
 			RedirectAttributes redirectAttributes, HttpSession session) {
 		if (StringUtils.isEmpty(taskId)) {
 			redirectAttributes.addFlashAttribute("message", "任务ID不能为空.");
+		}
+		//判断是否可以办理，如果不可以办理跳转到错误页面
+		if (!szyzsqManager.canComplete(taskId)) {
+			ModelAndView view = new ModelAndView("error/error");
+			view.addObject("errorInfo","流程已经办理完毕");
+			return view ;
 		}
 		Szyzsq szyzsq = szyzsqManager.getCurrentProcessInfo(taskId);
 		ModelAndView view = new ModelAndView(szyzsq.getFormKey());

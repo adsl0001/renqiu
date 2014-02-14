@@ -119,7 +119,10 @@ public class SzyzsqManager {
 		getProcessInfo(model);
 		return model;
 	}
-
+	public boolean canComplete(String taskId){
+		Date endTime = historyService.createHistoricTaskInstanceQuery().taskId(taskId).singleResult().getEndTime();
+			return endTime==null?true:false;
+	}
 	public Szyzsq getCurrentProcessInfo(String taskId) {
 		Task task = this.getTask(taskId);
 		String formKey = this.getFormKey(taskId);
