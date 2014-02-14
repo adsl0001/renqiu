@@ -64,22 +64,22 @@
 		</fieldset>
 	</div>
 <div id="welcome"  class=" ">
-          <font color="red">运行中的流程:${running }</font>
-          <table border="1" style="align:center">
-          <thead>	<tr>
-          		<th>工商窗口</th>
-          		<th>质监窗口</th>
-          		<th>国税窗口</th>
-          		<th>地税窗口</th>
-          	</tr></thead>
-          	<tr>
-          		<td>0</td>
-          		<td>0</td>
-          		<td>0</td>
-          		<td>0</td>
-          	</tr>
-          </table>
-          <font color="red">流程总数:${all }</font>
+<%--           <font color="red">运行中的流程:${running }</font> --%>
+<!--           <table border="1" style="align:center"> -->
+<!--           <thead>	<tr> -->
+<!--           		<th>工商窗口</th> -->
+<!--           		<th>质监窗口</th> -->
+<!--           		<th>国税窗口</th> -->
+<!--           		<th>地税窗口</th> -->
+<!--           	</tr></thead> -->
+<!--           	<tr> -->
+<!--           		<td>0</td> -->
+<!--           		<td>0</td> -->
+<!--           		<td>0</td> -->
+<!--           		<td>0</td> -->
+<!--           	</tr> -->
+<!--           </table> -->
+          <font color="red">流程总数:${process_all }</font>
           <table border="1" style="align:center">
            <thead>	<tr>
           		<th>工商窗口</th>
@@ -94,7 +94,7 @@
           		<td>${all.dishui }</td>
           	</tr>
           </table>
-          <font color="red">办结量:${bjl }</font>
+          <font color="red">流程办结量:${process_bjl }</font>
           <table border="1">
            <thead>	<tr>
           		<th>工商窗口</th>
@@ -109,7 +109,7 @@
           		<td>${bjl.dishui }</td>
           	</tr>
           </table>
-          <font color="red">办结率:${bjlv }%</font>
+          <font color="red">流程办结率:${process_bjlv }%</font>
           <table border="1">
            <thead>	<tr>
           		<th>工商窗口</th>
@@ -118,10 +118,10 @@
           		<th>地税窗口</th>
           	</tr></thead>
           	<tr>
-          			<td>${bjlv.gongshang }</td>
-          		<td>${bjlv.zhijian }</td>
-          		<td>${bjlv.guoshui }</td>
-          		<td>${bjlv.dishui }</td>
+          			<td>${bjlv.gongshang }%</td>
+          		<td>${bjlv.zhijian }%</td>
+          		<td>${bjlv.guoshui }%</td>
+          		<td>${bjlv.dishui }%</td>
           	</tr>
           </table>
 

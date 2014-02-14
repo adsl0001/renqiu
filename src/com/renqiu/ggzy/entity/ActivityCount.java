@@ -2,16 +2,16 @@ package com.renqiu.ggzy.entity;
 
 public class ActivityCount {
 	 
-	private String gongsang;
+	private String gongshang;
 	private String zhijian;
-	private String disui;
-	private String guosui;
+	private String dishui;
+	private String guoshui;
 	private String yinzhang;
-	public String getGongsang() {
-		return gongsang;
+	public String getGongshang() {
+		return gongshang;
 	}
-	public void setGongsang(String gongsang) {
-		this.gongsang = gongsang;
+	public void setGongshang(String gongsang) {
+		this.gongshang = gongsang;
 	}
 	public String getZhijian() {
 		return zhijian;
@@ -19,17 +19,17 @@ public class ActivityCount {
 	public void setZhijian(String zhijian) {
 		this.zhijian = zhijian;
 	}
-	public String getDisui() {
-		return disui;
+	public String getDishui() {
+		return dishui;
 	}
-	public void setDisui(String disui) {
-		this.disui = disui;
+	public void setDishui(String disui) {
+		this.dishui = disui;
 	}
-	public String getGuosui() {
-		return guosui;
+	public String getGuoshui() {
+		return guoshui;
 	}
-	public void setGuosui(String guosui) {
-		this.guosui = guosui;
+	public void setGuoshui(String guosui) {
+		this.guoshui = guosui;
 	}
 	public String getYinzhang() {
 		return yinzhang;

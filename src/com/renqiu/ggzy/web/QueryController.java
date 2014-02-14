@@ -78,69 +78,69 @@ public class QueryController {
 	// ModelAndView view = new ModelAndView("query/queryProcessInfo");
 	// return view ;
 	// }
-	@RequestMapping(value = { "queryProcessInfo" })
-	public ModelAndView queryProcessInfo(
-			@RequestParam(value = "startTime", required = false) String startTime,
-			@RequestParam(value = "endTime", required = false) String endTime) {
-		ModelAndView view = new ModelAndView("query/queryProcessInfo");
-		long bjl = 0;
-		long running = 0;
-		long all = 0;
-		long finished = 0;
-		long unfinished = 0;
-		ProcessInstanceQuery processInstanceQuery = runtimeService
-				.createProcessInstanceQuery();
-		processInstanceQuery = processInstanceQuery.processDefinitionKey(
-				this.processDefKey).active();
-		HistoricProcessInstanceQuery finishedHistoricProcessInstanceQuery = historyService
-				.createHistoricProcessInstanceQuery();
-		HistoricProcessInstanceQuery unfinishedHistoricProcessInstanceQuery = historyService
-				.createHistoricProcessInstanceQuery();
-		finishedHistoricProcessInstanceQuery = finishedHistoricProcessInstanceQuery
-				.processDefinitionKey(processDefKey).finished();
-		unfinishedHistoricProcessInstanceQuery = unfinishedHistoricProcessInstanceQuery
-				.processDefinitionKey(processDefKey).unfinished();
-		Date startDate = null;
-		if (StringUtils.isNotBlank(startTime)) {
-			startDate = DateUtil.convertStringToDate(startTime,
-					DateUtil.STANDARD_DATE_FORMAT, null);
-			if (startDate != null) {
-				finishedHistoricProcessInstanceQuery = finishedHistoricProcessInstanceQuery
-						.finishedAfter(startDate);
-				unfinishedHistoricProcessInstanceQuery = unfinishedHistoricProcessInstanceQuery
-						.finishedAfter(startDate);
-			}
-		}
-		Date endDate = null;
-		if (StringUtils.isNotBlank(endTime)) {
-			endDate = DateUtil.convertStringToDate(endTime,
-					DateUtil.STANDARD_DATE_FORMAT, null);
-			if (endDate != null) {
-				finishedHistoricProcessInstanceQuery = finishedHistoricProcessInstanceQuery
-						.finishedBefore(endDate);
-				unfinishedHistoricProcessInstanceQuery = unfinishedHistoricProcessInstanceQuery
-						.finishedBefore(endDate);
-			}
-
-		}
-		running = processInstanceQuery.processDefinitionKey(this.processDefKey)
-				.active().count();
-		finished = finishedHistoricProcessInstanceQuery.count();
-		unfinished = unfinishedHistoricProcessInstanceQuery.count();
-		all = unfinished + finished;
-		bjl = finished;
-		double bjlv = all != 0 ? NumberUtil.round((double) (finished) / all
-				* 100, 3) : 0;
-		view.addObject("bjl", bjl);
-		view.addObject("bjlv", bjlv);
-		view.addObject("running", running);
-		view.addObject("all", all);
-		view.addObject("startTime", DateUtil.getDateFormatString(startDate,
-				DateUtil.STANDARD_DATE_FORMAT));
-		view.addObject("endTime", DateUtil.getDateFormatString(endDate,
-				DateUtil.STANDARD_DATE_FORMAT));
-		return view;
-	}
+//	@RequestMapping(value = { "queryProcessInfo" })
+//	public ModelAndView queryProcessInfo(
+//			@RequestParam(value = "startTime", required = false) String startTime,
+//			@RequestParam(value = "endTime", required = false) String endTime) {
+//		ModelAndView view = new ModelAndView("query/queryProcessInfo");
+//		long bjl = 0;
+//		long running = 0;
+//		long all = 0;
+//		long finished = 0;
+//		long unfinished = 0;
+//		ProcessInstanceQuery processInstanceQuery = runtimeService
+//				.createProcessInstanceQuery();
+//		processInstanceQuery = processInstanceQuery.processDefinitionKey(
+//				this.processDefKey).active();
+//		HistoricProcessInstanceQuery finishedHistoricProcessInstanceQuery = historyService
+//				.createHistoricProcessInstanceQuery();
+//		HistoricProcessInstanceQuery unfinishedHistoricProcessInstanceQuery = historyService
+//				.createHistoricProcessInstanceQuery();
+//		finishedHistoricProcessInstanceQuery = finishedHistoricProcessInstanceQuery
+//				.processDefinitionKey(processDefKey).finished();
+//		unfinishedHistoricProcessInstanceQuery = unfinishedHistoricProcessInstanceQuery
+//				.processDefinitionKey(processDefKey).unfinished();
+//		Date startDate = null;
+//		if (StringUtils.isNotBlank(startTime)) {
+//			startDate = DateUtil.convertStringToDate(startTime,
+//					DateUtil.STANDARD_DATE_FORMAT, null);
+//			if (startDate != null) {
+//				finishedHistoricProcessInstanceQuery = finishedHistoricProcessInstanceQuery
+//						.finishedAfter(startDate);
+//				unfinishedHistoricProcessInstanceQuery = unfinishedHistoricProcessInstanceQuery
+//						.finishedAfter(startDate);
+//			}
+//		}
+//		Date endDate = null;
+//		if (StringUtils.isNotBlank(endTime)) {
+//			endDate = DateUtil.convertStringToDate(endTime,
+//					DateUtil.STANDARD_DATE_FORMAT, null);
+//			if (endDate != null) {
+//				finishedHistoricProcessInstanceQuery = finishedHistoricProcessInstanceQuery
+//						.finishedBefore(endDate);
+//				unfinishedHistoricProcessInstanceQuery = unfinishedHistoricProcessInstanceQuery
+//						.finishedBefore(endDate);
+//			}
+//
+//		}
+//		running = processInstanceQuery.processDefinitionKey(this.processDefKey)
+//				.active().count();
+//		finished = finishedHistoricProcessInstanceQuery.count();
+//		unfinished = unfinishedHistoricProcessInstanceQuery.count();
+//		all = unfinished + finished;
+//		bjl = finished;
+//		double bjlv = all != 0 ? NumberUtil.round((double) (finished) / all
+//				* 100, 3) : 0;
+//		view.addObject("bjl", bjl);
+//		view.addObject("bjlv", bjlv);
+//		view.addObject("running", running);
+//		view.addObject("all", all);
+//		view.addObject("startTime", DateUtil.getDateFormatString(startDate,
+//				DateUtil.STANDARD_DATE_FORMAT));
+//		view.addObject("endTime", DateUtil.getDateFormatString(endDate,
+//				DateUtil.STANDARD_DATE_FORMAT));
+//		return view;
+//	}
 
 	/**
 	 * 公示数据
@@ -180,8 +180,8 @@ public class QueryController {
 	}
 
 	@RequestMapping(value = "queryProcessInfo")
-	@ResponseBody
-	public void queryProcessInfoCount(
+//	@ResponseBody
+	public ModelAndView queryProcessInfoCount(
 			@RequestParam(value = "startTime", required = false) String startTime,
 			@RequestParam(value = "endTime", required = false) String endTime) {
 //
@@ -219,7 +219,7 @@ public class QueryController {
 				.createHistoricTaskInstanceQuery().taskName("地税窗口办理");
 		HistoricTaskInstanceQuery f_q_yinzhang = historyService
 				.createHistoricTaskInstanceQuery().taskName("印章刻制处办理");
-
+		HistoricProcessInstanceQuery historicProcessInstanceQuery =	historyService.createHistoricProcessInstanceQuery().processDefinitionKey(processDefKey);
 		Date startDate = null;
 		if (StringUtils.isNotBlank(startTime)) {
 			startDate = DateUtil.convertStringToDate(startTime,
@@ -238,6 +238,7 @@ public class QueryController {
 				f_q_guoshui = f_q_guoshui.taskCreatedAfter(startDate);
 				f_q_dishui = f_q_dishui.taskCreatedAfter(startDate);
 				f_q_yinzhang = f_q_yinzhang.taskCreatedAfter(startDate);
+				historicProcessInstanceQuery.startedAfter(startDate);
 			}
 		}
 		Date endDate = null;
@@ -258,9 +259,15 @@ public class QueryController {
 				f_q_guoshui = f_q_guoshui.taskCreatedBefore(endDate);
 				f_q_dishui = f_q_dishui.taskCreatedBefore(endDate);
 				f_q_yinzhang = f_q_yinzhang.taskCreatedBefore(endDate);
+				historicProcessInstanceQuery.startedBefore(startDate);
 			}
 
 		}
+		//流程总数
+		long process_all = historicProcessInstanceQuery.count();
+		long process_bjl = historicProcessInstanceQuery.finished().count();
+		double process_bjlv = process_all==0?0:NumberUtil.round( (double)process_bjl/process_all*100,3) ;
+		
 		// 在增加完成情况条件前先查出总量
 		long all_gongshang1 = q_gongshang1.count();
 		long all_gongshang2 = q_gongshang2.count();
@@ -269,9 +276,9 @@ public class QueryController {
 		long all_dishui = q_dishui.count();
 		long all_yinzhang = q_yinzhang.count();
 		ActivityCount all = new ActivityCount();
-		all.setDisui(String.valueOf( all_dishui));
-		all.setGongsang(String.valueOf(all_gongshang2 + all_gongshang1));
-		all.setGuosui(String.valueOf(all_guoshui));
+		all.setDishui(String.valueOf( all_dishui));
+		all.setGongshang(String.valueOf(all_gongshang2 + all_gongshang1));
+		all.setGuoshui(String.valueOf(all_guoshui));
 		all.setYinzhang(String.valueOf(all_yinzhang));
 		all.setZhijian(String.valueOf(all_zhijian));
 
@@ -283,30 +290,37 @@ public class QueryController {
 		long f_dishui = f_q_dishui.finished().count();
 		long f_yinzhang = f_q_yinzhang.finished().count();
 		ActivityCount bjl = new ActivityCount();
-		bjl.setDisui(String.valueOf(f_dishui));
-		bjl.setGongsang(String.valueOf(f_gongshang2 + f_gongshang1));
-		bjl.setGuosui(String.valueOf(f_guoshui));
+		bjl.setDishui(String.valueOf(f_dishui));
+		bjl.setGongshang(String.valueOf(f_gongshang2 + f_gongshang1));
+		bjl.setGuoshui(String.valueOf(f_guoshui));
 		bjl.setYinzhang(String.valueOf(f_yinzhang));
 		bjl.setZhijian(String.valueOf(f_zhijian));
 		// 办结率
 		ActivityCount bjlv = new ActivityCount();
-		bjlv.setDisui("0".equals(all.getDisui() )  ? String.valueOf(NumberUtil.round(
-				Double.parseDouble( bjl.getDisui())  / Double.parseDouble(all.getDisui()) * 100, 3)) : "0");
-		bjlv.setGongsang( "0".equals(all.getGongsang() )  ? String.valueOf(NumberUtil.round(
-				Double.parseDouble( bjl.getGongsang())  / Double.parseDouble(all.getGongsang()) * 100, 3)) : "0");
-		bjlv.setGuosui(  "0".equals(all.getGuosui() )  ? String.valueOf(NumberUtil.round(
-				Double.parseDouble( bjl.getGuosui())  / Double.parseDouble(all.getGuosui()) * 100, 3)) : "0");
-		bjlv.setYinzhang(  "0".equals(all.getYinzhang() )  ? String.valueOf(NumberUtil.round(
+		bjlv.setDishui(!"0".equals(all.getDishui() )  ? String.valueOf(NumberUtil.round(
+				Double.parseDouble( bjl.getDishui())  / Double.parseDouble(all.getDishui()) * 100, 3)) : "0");
+		bjlv.setGongshang(! "0".equals(all.getGongshang() )  ? String.valueOf(NumberUtil.round(
+				Double.parseDouble( bjl.getGongshang())  / Double.parseDouble(all.getGongshang()) * 100, 3)) : "0");
+		bjlv.setGuoshui( ! "0".equals(all.getGuoshui() )  ? String.valueOf(NumberUtil.round(
+				Double.parseDouble( bjl.getGuoshui())  / Double.parseDouble(all.getGuoshui()) * 100, 3)) : "0");
+		bjlv.setYinzhang( ! "0".equals(all.getYinzhang() )  ? String.valueOf(NumberUtil.round(
 				Double.parseDouble( bjl.getYinzhang())  / Double.parseDouble(all.getYinzhang()) * 100, 3)) : "0");
-		bjlv.setYinzhang(  "0".equals(all.getYinzhang() )  ? String.valueOf(NumberUtil.round(
+		bjlv.setYinzhang(  !"0".equals(all.getYinzhang() )  ? String.valueOf(NumberUtil.round(
 				Double.parseDouble( bjl.getYinzhang())  / Double.parseDouble(all.getYinzhang()) * 100, 3)) : "0");
-		ModelAndView view = new ModelAndView("aaaa");
+		bjlv.setZhijian  (  !"0".equals(all.getZhijian() )  ? String.valueOf(NumberUtil.round(
+				Double.parseDouble( bjl.getZhijian())  / Double.parseDouble(all.getZhijian()) * 100, 3)) : "0");
+
+		ModelAndView view =new ModelAndView("query/queryProcessInfo");
 		view.addObject("bjl", bjl);
 		view.addObject("bjlv", bjlv);
 		view.addObject("all", all);
+		view.addObject("process_bjl",process_bjl);
+		view.addObject("process_bjlv",process_bjlv);
+		view.addObject("process_all",process_all);
 		view.addObject("startTime", DateUtil.getDateFormatString(startDate,
 				DateUtil.STANDARD_DATE_FORMAT));
 		view.addObject("endTime", DateUtil.getDateFormatString(endDate,
 				DateUtil.STANDARD_DATE_FORMAT));
+		return view ;
 	}
 }
