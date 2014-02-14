@@ -29,7 +29,7 @@
 	<script type="text/javascript">
 	    $(function() {
 	    	$('#startTime,#endTime').datepicker({
-	    		 showButtonPanel: true 
+// 	    		 showButtonPanel: true 
 	        });
 	    });
 	</script>
@@ -39,7 +39,7 @@
 <!--  <div class="container showgrid"></div>  -->
 
 	<div>
-        <div class=" ui-widget-header ui-corner-all">
+        <div class="  ">
 			<a href="javascript:;" onfocus="this.blur();"></a>
 			 <h5></h5>流程信息统计 
 			<a id="displayHidden" class="right" onclick="this.blur();" href= "javascript:;">隐藏查询条件</a>
@@ -63,15 +63,15 @@
 			</form>
 		</fieldset>
 	</div>
-<div id="welcome"  class="box">
+<div id="welcome"  class=" ">
           <font color="red">运行中的流程:${running }</font>
           <table border="1" style="align:center">
-          	<tr>
-          		<td>工商窗口</td>
-          		<td>质监窗口</td>
-          		<td>国税窗口</td>
-          		<td>地税窗口</td>
-          	</tr>
+          <thead>	<tr>
+          		<th>工商窗口</th>
+          		<th>质监窗口</th>
+          		<th>国税窗口</th>
+          		<th>地税窗口</th>
+          	</tr></thead>
           	<tr>
           		<td>0</td>
           		<td>0</td>
@@ -81,47 +81,47 @@
           </table>
           <font color="red">流程总数:${all }</font>
           <table border="1" style="align:center">
+           <thead>	<tr>
+          		<th>工商窗口</th>
+          		<th>质监窗口</th>
+          		<th>国税窗口</th>
+          		<th>地税窗口</th>
+          	</tr></thead>
           	<tr>
-          		<td>工商窗口</td>
-          		<td>质监窗口</td>
-          		<td>国税窗口</td>
-          		<td>地税窗口</td>
-          	</tr>
-          	<tr>
-          		<td>0</td>
-          		<td>0</td>
-          		<td>0</td>
-          		<td>0</td>
+          		<td>${all.gongshang }</td>
+          		<td>${all.zhijian }</td>
+          		<td>${all.guoshui }</td>
+          		<td>${all.dishui }</td>
           	</tr>
           </table>
           <font color="red">办结量:${bjl }</font>
           <table border="1">
+           <thead>	<tr>
+          		<th>工商窗口</th>
+          		<th>质监窗口</th>
+          		<th>国税窗口</th>
+          		<th>地税窗口</th>
+          	</tr></thead>
           	<tr>
-          		<td>工商窗口</td>
-          		<td>质监窗口</td>
-          		<td>国税窗口</td>
-          		<td>地税窗口</td>
-          	</tr>
-          	<tr>
-          		<td>0</td>
-          		<td>0</td>
-          		<td>0</td>
-          		<td>0</td>
+          		<td>${bjl.gongshang }</td>
+          		<td>${bjl.zhijian }</td>
+          		<td>${bjl.guoshui }</td>
+          		<td>${bjl.dishui }</td>
           	</tr>
           </table>
           <font color="red">办结率:${bjlv }%</font>
           <table border="1">
+           <thead>	<tr>
+          		<th>工商窗口</th>
+          		<th>质监窗口</th>
+          		<th>国税窗口</th>
+          		<th>地税窗口</th>
+          	</tr></thead>
           	<tr>
-          		<td>工商窗口</td>
-          		<td>质监窗口</td>
-          		<td>国税窗口</td>
-          		<td>地税窗口</td>
-          	</tr>
-          	<tr>
-          		<td>0</td>
-          		<td>0</td>
-          		<td>0</td>
-          		<td>0</td>
+          			<td>${bjlv.gongshang }</td>
+          		<td>${bjlv.zhijian }</td>
+          		<td>${bjlv.guoshui }</td>
+          		<td>${bjlv.dishui }</td>
           	</tr>
           </table>
 
