@@ -55,7 +55,8 @@ public class QueryManager {
 
 	public void queryPublicInfo(Page<PublicInfo> page, int[] pageParams) {
 		List<HistoricProcessInstance> historicProcessInstanceList = historyService
-				.createHistoricProcessInstanceQuery().orderByProcessInstanceStartTime().desc()
+				.createHistoricProcessInstanceQuery()
+				.orderByProcessInstanceStartTime().desc()
 				.processDefinitionKey(processDefKey)
 				.listPage(pageParams[0], pageParams[1]);
 		ProcessInstanceQuery processInstanceQuery = runtimeService
@@ -97,7 +98,7 @@ public class QueryManager {
 			publicInfo.setSfcq(sfcq);
 			results.add(publicInfo);
 		}
-		page.setTotalCount(results.size());
+		page.setTotalCount(processInstanceQuery.count());
 		page.setResult(results);
 	}
 }
