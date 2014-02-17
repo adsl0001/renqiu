@@ -45,9 +45,9 @@ import com.renqiu.demo.activiti.service.oa.leave.LeaveManager;
 import com.renqiu.demo.activiti.util.Page;
 import com.renqiu.demo.activiti.util.Variable;
 import com.renqiu.ggzy.dao.SzyzsqDao;
-import com.renqiu.ggzy.entity.Comment;
 import com.renqiu.ggzy.entity.Szyzsq;
 import com.renqiu.ggzy.util.DateUtil;
+import com.renqiu.ggzy.vo.Comment;
 
 /**
  *  

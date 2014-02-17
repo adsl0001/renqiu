@@ -1,4 +1,4 @@
-package com.renqiu.ggzy.entity;
+package com.renqiu.ggzy.vo;
 
 /**
  * 公示信息

@@ -1,4 +1,4 @@
-package com.renqiu.ggzy.entity;
+package com.renqiu.ggzy.vo;
 
 public class ActivityCount {
 	 

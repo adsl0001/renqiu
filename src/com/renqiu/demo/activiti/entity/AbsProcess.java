@@ -10,7 +10,7 @@ import org.activiti.engine.repository.ProcessDefinition;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.Task;
 
-import com.renqiu.ggzy.entity.Comment;
+import com.renqiu.ggzy.vo.Comment;
 
 public abstract class AbsProcess {
 	// 运行中的流程实例

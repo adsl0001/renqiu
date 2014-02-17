@@ -45,13 +45,13 @@ import com.renqiu.demo.activiti.util.Page;
 import com.renqiu.demo.activiti.util.PageUtil;
 import com.renqiu.demo.activiti.util.UserUtil;
 import com.renqiu.demo.activiti.util.Variable;
-import com.renqiu.ggzy.entity.ActivityCount;
-import com.renqiu.ggzy.entity.PublicInfo;
 import com.renqiu.ggzy.entity.Szyzsq;
 import com.renqiu.ggzy.service.QueryManager;
 import com.renqiu.ggzy.service.SzyzsqManager;
 import com.renqiu.ggzy.util.DateUtil;
 import com.renqiu.ggzy.util.NumberUtil;
+import com.renqiu.ggzy.vo.ActivityCount;
+import com.renqiu.ggzy.vo.PublicInfo;
 
 @Controller
 @RequestMapping(value = "/query")
@@ -170,6 +170,7 @@ public class QueryController {
 	@RequestMapping(value = "public/{pageSize}")
 	public ModelAndView publicInfo(@PathVariable("pageSize") String pageSize,
 			HttpSession session, HttpServletRequest request) {
+		queryManager.find(null, null);
 		int iPageSize = 20;
 		if (NumberUtils.isNumber(pageSize)) {
 			iPageSize = NumberUtils.toInt(pageSize);
