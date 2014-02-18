@@ -55,6 +55,7 @@ public class QueryManager {
 	private SzyzsqDao szyzsqDao;
 
 	public List<Map<String, Object>> find(Date startDate, Date endDate) {
+		
 		Query query =  em.createNativeQuery("select * from t_szyzsq",Szyzsq.class);
 		List list = query.getResultList();
 		for (int i = 0; i < list.size(); i++) {
