@@ -31,19 +31,8 @@
 	<script src="${ctx }/js/common/plugins/html/jquery.outerhtml.js" type="text/javascript"></script>
 	<script src="${ctx }/js/module/activiti/workflow.js" type="text/javascript"></script>
     <script src="${ctx }/js/module/main/welcome-portlet.js" type="text/javascript"></script>
-<<<<<<< HEAD
-=======
-     <script type="text/javascript">
-    // function popup(){
-    	 //重复执行任务，可设置一段时间后执行检查流程超期情况；
-    	 //setInterval("xxxx()",time);
-    	 //在查询流程超期方法中调用窗口弹出方法；
-    	 
-   //  }
-    
-   
-	</script>
->>>>>>> branch 'master' of https://github.com/adsl0001/renqiu
+ 
+ 
 </head>
 <body style="margin-top: 1em;">
 	<div class="center">
@@ -60,14 +49,6 @@
          <tr><TD>流程总数:${all }</TD></tr>
          </TABLE>
     </div>
-<<<<<<< HEAD
-=======
-     <!-- <button onclick="tips_pop()">测试按钮</button> -->
-<!-- 	 <div id="winpop">  -->
-<!-- 	 	<div class="title">流程提醒功能<span class="close" onclick="tips_pop()">X</span></div>  -->
-<!-- 	   <div class="con">未读信息(1)</div>  -->  
-<!-- 	 	<div><FONT size="4">以下流程即将到期请及时处理：</FONT></div>  -->
-<!-- 	 </div> -->
->>>>>>> branch 'master' of https://github.com/adsl0001/renqiu
+ 
 </body>
 </html>
