@@ -44,6 +44,7 @@
 				var page = data.page;
 				currentPage = page.hasNext?++currentPage:1;
                	 var dblc = $('#effect');
+              
                	 dblc.empty();
                	 var contextHtml= '';
                	//表头
@@ -83,13 +84,15 @@
     };
 
  	function reOpen(){
- 		$( "#effect:visible" ).removeAttr( "style" ).fadeOut();
+ 		$( "#effect:visible" ).removeAttr( "style" ).fadeOut(function() {initData(currentPage,pageSize);});
  	    //重新打开页面
- 	    initData(currentPage,pageSize); 
+  	    //initData(currentPage,pageSize); 
  	    runEffect();
+ 	   
  	};
+ 	 $( "#effect" ).hide();
  	initData(currentPage,pageSize);
-    $( "#effect" ).hide();
+   
     runEffect();
   });
   </script>

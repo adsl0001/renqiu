@@ -7,6 +7,9 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.activiti.engine.FormService;
 import org.activiti.engine.HistoryService;
@@ -26,13 +29,16 @@ import org.springframework.stereotype.Service;
 
 import com.renqiu.demo.activiti.util.Page;
 import com.renqiu.ggzy.dao.SzyzsqDao;
-import com.renqiu.ggzy.entity.PublicInfo;
+import com.renqiu.ggzy.entity.Szyzsq;
 import com.renqiu.ggzy.util.DateUtil;
+import com.renqiu.ggzy.vo.PublicInfo;
 
 @Service
 public class QueryManager {
 	private Logger logger = LoggerFactory.getLogger(getClass());
 	private static final String processDefKey = "renqiu_szyzsq";
+	@PersistenceContext
+	EntityManager em;
 	@Resource
 	private RuntimeService runtimeService;
 	@Resource
@@ -49,6 +55,12 @@ public class QueryManager {
 	private SzyzsqDao szyzsqDao;
 
 	public List<Map<String, Object>> find(Date startDate, Date endDate) {
+		
+		Query query =  em.createNativeQuery("select * from t_szyzsq",Szyzsq.class);
+		List list = query.getResultList();
+		for (int i = 0; i < list.size(); i++) {
+			
+		}
 		return null;
 
 	}
