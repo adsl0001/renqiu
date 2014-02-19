@@ -29,6 +29,10 @@
             stepMinute: 5
         });
     });
+    function inputApplyPrint(){
+    	var sqbh = $("#sqbh").val();
+    	window.open('inputApplyPrint/'+sqbh,'newwindow','height=600,width=800');
+    }
     </script>
 </head>
 
@@ -55,19 +59,18 @@
 	<form:form id="inputForm" action="${ctx}/szyzsq/completeTask" method="post" class="form-horizontal">
 		<fieldset>
 			<legend><small>四证联办申请受理</small></legend>
-			<input type="hidden"  name = "sqbh" value ="${szyzsq.sqbh}"></input>
+			<input type="hidden" id="sqbh" name = "sqbh" value ="${szyzsq.sqbh}"></input>
 				<input type="hidden"  name = "taskId" value ="${szyzsq.task.id}"></input>
 				<input type="hidden"  name = "sfkz" value ="${szyzsq.sfkz}"></input>
 				<input type="hidden"  name = "sfblgs" value ="${szyzsq.sfblgs}"></input>
-		<input type="hidden"  name = "slr" value ="${szyzsq.slr}"></input>
+		<input type="hidden"  name = "slr" value ="${szyzsq.slr}"></input> 
 		<input type="hidden"  name = "slrxm" value ="${szyzsq.slrxm}"></input>
-		
 			<table border="1">
 			<tr>
 				<td>法人身份证号：</td>
 				<td>
 				 ${szyzsq.frsfzh}
-				 <input name="frsfzh" type="hidden" value ="${szyzsq.frsfzh}">
+				 <input id="frsfzh" name="frsfzh" type="hidden" value ="${szyzsq.frsfzh}">
 				</td>
 			</tr>
 		 	<tr>
@@ -91,7 +94,7 @@
 			<tr>
 				<td>&nbsp;</td>
 				<td>
-					<input type = 'button'	onclick="this.disabled=true;this.form.submit()" value='提交'></input>
+					<input type = 'button'	onclick="this.form.submit();inputApplyPrint()" value='提交'></input>
 				</td>
 			</tr>
 		</table>

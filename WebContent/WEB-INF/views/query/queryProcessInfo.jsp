@@ -81,7 +81,7 @@
 <!--           	</tr> -->
 <!--           </table> -->
 <div><font color="red">流程总数:${process_all }</font>
-	<fieldset>
+	
           
           <table border="1" style="align:center">
            <thead>	<tr>
@@ -96,8 +96,8 @@
           		<td>${all.guoshui }</td>
           		<td>${all.dishui }</td>
           	</tr>
-          </table></fieldset></div>
-          <div> <font color="red">流程办结量:${process_bjl }</font><fieldset>
+          </table></div>
+          <div> <font color="red">流程办结量:${process_bjl }</font>
          
           <table border="1">
            <thead>	<tr>
@@ -112,9 +112,9 @@
           		<td>${bjl.guoshui }</td>
           		<td>${bjl.dishui }</td>
           	</tr>
-          </table></fieldset></div>
+          </table></div>
           <div><font color="red">流程办结率:${process_bjlv }%</font>
-          <fieldset>
+          
           
           <table border="1">
            <thead>	<tr>
@@ -129,7 +129,7 @@
           		<td>${bjlv.guoshui }%</td>
           		<td>${bjlv.dishui }%</td>
           	</tr>
-          </table></fieldset></div>
+          </table></div>
 </fieldset>
 <!--          <TABLE> -->
 <%--          <tr><TD>办结量:${bjl }</TD></tr> --%>

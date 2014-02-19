@@ -1,6 +1,7 @@
 package com.renqiu.ggzy.web;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -321,6 +322,37 @@ public class QueryController {
 				DateUtil.STANDARD_DATE_FORMAT));
 		view.addObject("endTime", DateUtil.getDateFormatString(endDate,
 				DateUtil.STANDARD_DATE_FORMAT));
-		return view ;
+		return view;
 	}
+
+	@RequestMapping(value = "queryTimeoutTask")
+	@ResponseBody
+	public  List<Map<String, Object>> queryTimeoutTask(HttpSession session) {
+		Calendar now = Calendar.getInstance();
+		User user = UserUtil.getUserFromSession(session);
+		List<Map<String, Object>> list = new ArrayList<Map<String,Object>>();
+		Map<String, Object> map ;
+		// 用户未登录不能操作，实际应用使用权限框架实现，例如Spring Security、Shiro等
+		if (user == null || StringUtils.isBlank(user.getId())) {
+			return list;
+		}
+		// 所有超期时间在现在之后的待办
+		// 在现在之后的是即将超期的
+		List<Task> taskList = taskService.createTaskQuery().active()
+				.taskAssignee(user.getId()).dueAfter(now.getTime()).list();
+		 
+		// 判断是否需要提醒
+		for (Task task : taskList) {
+			// TODO 根据超期时间点设置 判断是否是即将超期的任务
+			map = new HashMap<String, Object>();
+			map.put("taskId", task.getId());
+			map.put("createTime", DateUtil.getDateFormatString( task.getCreateTime(),DateUtil.STANDARD_DATETIME_FORMAT));
+			map.put("taskName", task.getName());
+			map.put("pid", task.getProcessInstanceId());
+			map.put("dueDate", DateUtil.getDateFormatString( task.getDueDate(),DateUtil.STANDARD_DATETIME_FORMAT));
+			list.add(map);
+		}
+		return list;
+	}
+ 
 }
