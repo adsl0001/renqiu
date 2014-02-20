@@ -296,6 +296,7 @@ public class SzyzsqManager {
 					commentMessage == null ? "" : commentMessage);
 			taskService.setAssignee(taskId, assignee);
 			taskService.complete(taskId, variables);
+			
 			return "success";
 		} catch (Exception e) {
 			logger.error("error on complete task {}, variables={}",
