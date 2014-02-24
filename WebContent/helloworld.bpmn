@@ -17,9 +17,9 @@
     <userTask id="usertask23" name="办理营业执照" activiti:assignee="#{assignee}" activiti:dueDate="${dueDate.day(3)}" activiti:formKey="/szyzsq/view">
       <documentation>办理时限3天</documentation>
     </userTask>
-    <sequenceFlow id="flow36" sourceRef="usertask4" targetRef="parallelgateway1"></sequenceFlow>
+    <sequenceFlow id="flow36" sourceRef="usertask4" targetRef="parallelgateway1_end"></sequenceFlow>
     <exclusiveGateway id="exclusivegateway2" name="Exclusive Gateway"></exclusiveGateway>
-    <sequenceFlow id="flow37" sourceRef="usertask23" targetRef="parallelgateway1"></sequenceFlow>
+    <sequenceFlow id="flow37" sourceRef="usertask23" targetRef="parallelgateway1_end"></sequenceFlow>
     <sequenceFlow id="flow38" name="需要刻章" sourceRef="exclusivegateway2" targetRef="usertask11">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${sfkz==1}]]></conditionExpression>
     </sequenceFlow>
@@ -36,14 +36,14 @@
     </sequenceFlow>
     <userTask id="usertask24" name="通知当事人交税及领证" activiti:assignee="#{assignee}" activiti:formKey="/szyzsq/view"></userTask>
     <sequenceFlow id="flow48" sourceRef="usertask13" targetRef="usertask14"></sequenceFlow>
-    <sequenceFlow id="flow53" sourceRef="exclusivegateway1" targetRef="parallelgateway2">
+    <sequenceFlow id="flow53" sourceRef="exclusivegateway1" targetRef="parallelgateway1_start">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${input==0}]]></conditionExpression>
     </sequenceFlow>
-    <parallelGateway id="parallelgateway1" name="Parallel Gateway"></parallelGateway>
-    <sequenceFlow id="flow54" sourceRef="parallelgateway1" targetRef="exclusivegateway2"></sequenceFlow>
-    <parallelGateway id="parallelgateway2" name="Parallel Gateway"></parallelGateway>
-    <sequenceFlow id="flow55" sourceRef="parallelgateway2" targetRef="usertask23"></sequenceFlow>
-    <sequenceFlow id="flow56" sourceRef="parallelgateway2" targetRef="usertask4"></sequenceFlow>
+    <parallelGateway id="parallelgateway1_end" name="Parallel Gateway"></parallelGateway>
+    <sequenceFlow id="flow54" sourceRef="parallelgateway1_end" targetRef="exclusivegateway2"></sequenceFlow>
+    <parallelGateway id="parallelgateway1_start" name="Parallel Gateway"></parallelGateway>
+    <sequenceFlow id="flow55" sourceRef="parallelgateway1_start" targetRef="usertask23"></sequenceFlow>
+    <sequenceFlow id="flow56" sourceRef="parallelgateway1_start" targetRef="usertask4"></sequenceFlow>
     <userTask id="gongshang_start" name="工商窗口审核" activiti:assignee="#{assignee}" activiti:formKey="/szyzsq/start_gongshang"></userTask>
     <sequenceFlow id="flow68" sourceRef="gongshang_start" targetRef="exclusivegateway1"></sequenceFlow>
     <sequenceFlow id="flow69" sourceRef="exclusivegateway1" targetRef="gongshang_2">
@@ -106,10 +106,10 @@
       <bpmndi:BPMNShape bpmnElement="usertask24" id="BPMNShape_usertask24">
         <omgdc:Bounds height="61.0" width="143.0" x="190.0" y="1060.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="parallelgateway1" id="BPMNShape_parallelgateway1">
+      <bpmndi:BPMNShape bpmnElement="parallelgateway1_end" id="BPMNShape_parallelgateway1_end">
         <omgdc:Bounds height="40.0" width="40.0" x="241.0" y="545.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="parallelgateway2" id="BPMNShape_parallelgateway2">
+      <bpmndi:BPMNShape bpmnElement="parallelgateway1_start" id="BPMNShape_parallelgateway1_start">
         <omgdc:Bounds height="40.0" width="40.0" x="241.0" y="360.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="gongshang_start" id="BPMNShape_gongshang_start">
@@ -222,7 +222,8 @@
         <omgdi:waypoint x="261.0" y="1060.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow80" id="BPMNEdge_flow80">
-        <omgdi:waypoint x="136.0" y="55.0"></omgdi:waypoint>
+        <omgdi:waypoint x="189.0" y="27.0"></omgdi:waypoint>
+        <omgdi:waypoint x="261.0" y="27.0"></omgdi:waypoint>
         <omgdi:waypoint x="261.0" y="80.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
