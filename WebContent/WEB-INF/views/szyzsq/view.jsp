@@ -131,11 +131,11 @@
 		</fieldset>
 	</form:form>
 	</div>
-	<form:form id="goBackForm" action="${ctx}/szyzsq/rejectTask" method="post" class="form-horizontal">
-		<input type="hidden"  name = "taskId" value ="${szyzsq.task.id}"></input>
-		<input id="backMessage" name="commentMessage" type="hidden" value ="" ></input>
-		<input></input>
-	</form:form>
+<%-- 	<form:form id="goBackForm" action="${ctx}/szyzsq/rejectTask" method="post" class="form-horizontal"> --%>
+<%-- 		<input type="hidden"  name = "taskId" value ="${szyzsq.task.id}"></input> --%>
+<!-- 		<input id="backMessage" name="commentMessage" type="hidden" value ="" ></input> -->
+<!-- 		<input></input> -->
+<%-- 	</form:form> --%>
 	<script type="text/javascript">
 	function goBack (){
 		$("#backMessage").val($("#reason").val());
