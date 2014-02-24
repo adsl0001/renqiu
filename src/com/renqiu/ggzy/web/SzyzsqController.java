@@ -101,7 +101,7 @@ public class SzyzsqController {
 			szyzsq.setLxfs("");
 			szyzsq.setQymc("");
 			szyzsq.setSlr(user.getId());
-			szyzsq.setSlrxm(user.getFirstName()+user.getLastName());
+			szyzsq.setSlrxm(user.getFirstName() + user.getLastName());
 			ProcessInstance processInstance = szyzsqManager.startWorkFlow(
 					szyzsq, user, variables);
 			redirectAttributes.addFlashAttribute("message", "流程已启动，流程ID："
@@ -117,6 +117,14 @@ public class SzyzsqController {
 			view.addObject("szyzsq", szyzsq);
 		}
 		return view;
+	}
+
+	public String completeAndPrint(Szyzsq szyzsq, String taskId,
+			String assignee, String commentMessage, HttpSession session,
+			String input) {
+		String re = this.completeTask(szyzsq, taskId, assignee, commentMessage,
+				session, input);
+		return re;
 	}
 
 	/**
@@ -147,7 +155,7 @@ public class SzyzsqController {
 		if (!StringUtils.isBlank(input)) {
 			paramMap.put("input", input);
 		}
-		
+
 		this.szyzsqManager.completeUserTask(szyzsq, user.getId(), taskId,
 				paramMap, assignee, commentMessage);
 		return "redirect:/szyzsq/todoList";
@@ -208,11 +216,11 @@ public class SzyzsqController {
 		if (StringUtils.isEmpty(taskId)) {
 			redirectAttributes.addFlashAttribute("message", "任务ID不能为空.");
 		}
-		//判断是否可以办理，如果不可以办理跳转到错误页面
+		// 判断是否可以办理，如果不可以办理跳转到错误页面
 		if (!szyzsqManager.canComplete(taskId)) {
 			ModelAndView view = new ModelAndView("error/error");
-			view.addObject("errorInfo","流程已经办理完毕");
-			return view ;
+			view.addObject("errorInfo", "流程已经办理完毕");
+			return view;
 		}
 		Szyzsq szyzsq = szyzsqManager.getCurrentProcessInfo(taskId);
 		ModelAndView view = new ModelAndView(szyzsq.getFormKey());
@@ -243,8 +251,10 @@ public class SzyzsqController {
 		view.addObject("page", page);
 		return view;
 	}
+
 	@RequestMapping(value = "finishedList")
-	public ModelAndView finishedList(HttpSession session, HttpServletRequest request) {
+	public ModelAndView finishedList(HttpSession session,
+			HttpServletRequest request) {
 		User user = UserUtil.getUserFromSession(session);
 		// 用户未登录不能操作，实际应用使用权限框架实现，例如Spring Security、Shiro等
 		if (user == null || StringUtils.isBlank(user.getId())) {
@@ -259,7 +269,7 @@ public class SzyzsqController {
 	}
 
 	@RequestMapping(value = "queryList")
-	 @ResponseBody
+	@ResponseBody
 	public List<Map<String, Object>> queryList(String frsfzh,
 			HttpSession session, HttpServletRequest request,
 			RedirectAttributes redirectAttributes) {
@@ -276,17 +286,17 @@ public class SzyzsqController {
 				frsfzh, user.getId());
 		List<Map<String, Object>> value = new ArrayList<Map<String, Object>>(
 				szyzsqList == null ? 0 : szyzsqList.size());
-		
+
 		for (Szyzsq szyzsq : szyzsqList) {
-			if (szyzsq.getTask()==null) {
-				//没有待办任务
+			if (szyzsq.getTask() == null) {
+				// 没有待办任务
 				continue;
 			}
-			String assignee = szyzsq .getTask().getAssignee();
-//			//不是自己办理的
-//			if (!StringUtils.equals(assignee, userId)) {
-//				continue;
-//			}
+			String assignee = szyzsq.getTask().getAssignee();
+			// //不是自己办理的
+			// if (!StringUtils.equals(assignee, userId)) {
+			// continue;
+			// }
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("sqbh", szyzsq.getSqbh());
 			map.put("frsfzh", szyzsq.getFrsfzh());
@@ -296,7 +306,9 @@ public class SzyzsqController {
 			map.put("task_name", szyzsq.getTask().getName());
 			map.put("task_id", szyzsq.getTask().getId());
 			map.put("task_assignee", assignee);
-			map.put("task_createTime", DateUtil.getDateFormatString(szyzsq.getTask().getCreateTime(),DateUtil.STANDARD_DATETIME_FORMAT));
+			map.put("task_createTime", DateUtil.getDateFormatString(szyzsq
+					.getTask().getCreateTime(),
+					DateUtil.STANDARD_DATETIME_FORMAT));
 			map.put("processDefinition_version", szyzsq.getProcessDefinition()
 					.getVersion());
 			value.add(map);

@@ -31,9 +31,13 @@
     });
     function inputApplyPrint(){
     	var sqbh = $("#sqbh").val();
-    	window.open('inputApplyPrint/'+sqbh,'newwindow','height=600,width=800');
+    	 var $tempForm = $('<form method="post" target="_blank" action="' + ctx+'/szyzsq/inputApplyPrint/'+sqbh + '"></form>');  
+    	    $("body").append($tempForm);  
+    	    $tempForm.submit();  
+    	    $tempForm.remove();  
+    	//window.open(ctx+'/szyzsq/inputApplyPrint/'+sqbh,'newwindow','height=600,width=800');
     }
-    function isnull(){
+    function isnull(button){
     	var frxmlen = $("#frxm").val().length;
     	var lxfslen = $("#lxfs").val().length;
     	var qymclen = $("#qymc").val().length;
@@ -46,8 +50,18 @@
     	else if(qymclen == ""){
     		alert("公司核准名称不能为空");
     	}else if(frxmlen != ""&& lxfslen != "" && qymclen != ""){
-    		inputForm.submit();
-	  		inputApplyPrint();
+    		button.disabled=true;
+    		$.ajax({
+    			url: ctx+"/szyzsq/completeTask",
+    				data:$("form").serialize(),
+    				type:"post",
+    				//contentType: "application/x-www-form-urlencoded; charset=utf-8", 
+    				success: function(){
+    					inputApplyPrint();
+    					window.location.href=ctx+"/szyzsq/todoList";
+    				}
+    		});
+	  		
     	}
     }
     </script>
@@ -111,7 +125,7 @@
 			<tr>
 				<td>&nbsp;</td>
 				<td>
-					<input type = 'button'	onclick="isnull()" value='提交'></input>
+					<input type = 'button'	onclick="isnull(this)" value='提交'></input>
 				</td>
 			</tr>
 		</table>

@@ -105,9 +105,16 @@
 	    }
 	    return errorvalue;
 	}
+	function submitForm()
+	{
+		//判断原法人身份证号与文本框中是否一致，不一致提示
+		var temp = $("#frsfzh").val();
+		this.disabled=true;
+		this.form.submit();
+	}
 	//查询历史记录
 	function queryHistory(){
-		var frsfzh = $('#frsfzh').val();
+		var frsfzh = $('#queryfrsfzh').val();
 		if (frsfzh==""){
 			alert("请输入法人身份证号码");
 			return false;
@@ -115,14 +122,16 @@
 		var errorvalue = isCard(frsfzh);
 		if(errorvalue == 1){
 			 $('#historyProcess').empty();
+			 return ;
 		}
 		if(errorvalue != 1){
 			$.ajax({ url: ctx+"/szyzsq/queryList",
 				data:"frsfzh="+frsfzh,
 				success: function(data){
+					$("#frsfzh").val(frsfzh);
 					 if (data.length == 0) {
 	                     $('#historyProcess').empty();
-	                     $('#historyProcess').html('未查询到办理记录，您可以<input type = "button"	onclick="this.disabled=true;this.form.submit()" value="启动新流程"/> 。');
+	                     $('#historyProcess').html('未查询到<span class="info large">'+frsfzh+'</span>的办理记录，您可以<input type = "button"	onclick="this.disabled=true;this.form.submit()" value="启动新流程"/> 。');
 	                 }else{
 	                	 var dblc = $('#historyProcess');
 	                	 dblc.empty();
@@ -155,7 +164,7 @@
 							 
 						});	
 	                	contextHtml+='</tbody>	</table>';		
-	                		contextHtml+='<p>查询到未办理完成的流程，您可以<input type = "button"	onclick="this.disabled=true;this.form.submit()" value="启动新流程"/> 或继续办理以前没有完成的流程。</p>'
+	                		contextHtml+='<p>查询到<span class="info large">'+frsfzh+'</span>未办理完成的流程，您可以<input type = "button"	onclick="this.disabled=true;this.form.submit()" value="启动新流程"/> 或继续办理以前没有完成的流程。</p>'
 	                	 dblc.html(contextHtml);
 	                		// 跟踪
 	                	    $('.trace').click(graphTrace);
@@ -194,22 +203,26 @@
 				}, 5000);
 			</script> 
   </c:if>
-  <form:form id="inputForm" action="${ctx}/szyzsq/inputApply"
-			method="post" class="form-horizontal" >
     <fieldset>
       <legend> <small>四证申请受理</small> </legend>
       <div>
-        法人身份证号：<input id='frsfzh' name='frsfzh' type="text"></input>
+        法人身份证号：<input id='queryfrsfzh' name='queryfrsfzh' type="text"></input>
         &nbsp;
         <input id="queryHistory" type="button" value="查询" ></input>
+       
         <p></p>
         <input type="hidden" id="sqbh" name="sqbh" value=""></input>
       </div>
-      <div id="historyProcess">
+     
+  
+  <form:form id="inputForm" action="${ctx}/szyzsq/inputApply"
+			method="post" class="form-horizontal" >
+  		<input id='frsfzh' name='frsfzh' type="hidden"></input>
+  		 <input type="text" style="display:none">
+  		  <div id="historyProcess">
         &nbsp;
       </div>
-    </fieldset>
-  </form:form>
+  </form:form>  </fieldset>
 </div>
 </body>
 </html>

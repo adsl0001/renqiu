@@ -3,6 +3,7 @@
 
 <html lang="en">
 <head>
+<link href="css/login.css" rel="stylesheet">
 	<%@ include file="/common/global.jsp"%>
 	<title>企业注册四证联办监管系统登录</title>
 	<script>
