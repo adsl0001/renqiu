@@ -33,6 +33,24 @@
     	var sqbh = $("#sqbh").val();
     	window.open('inputApplyPrint/'+sqbh,'newwindow','height=600,width=800');
     }
+    function isnull(){
+    	var frxmlen = $("#frxm").val().length;
+    	var lxfslen = $("#lxfs").val().length;
+    	var qymclen = $("#qymc").val().length;
+    	if(frxmlen == ""){
+    		alert("法人姓名不能为空");
+    	}
+    	else if(lxfslen == ""){
+    		alert("联系方式不能为空");
+    	}
+    	else if(qymclen == ""){
+    		alert("公司核准名称不能为空");
+    	}else if(frxmlen != ""&& lxfslen != "" && qymclen != ""){
+    		alert("ss");
+    		inputForm.submit();
+	  		inputApplyPrint();
+    	}
+    }
     </script>
 </head>
 
@@ -76,7 +94,7 @@
 		 	<tr>
 				<td>法人姓名：</td>
 				<td>
-				<input id="frxm" name="frxm" type="text" value ="${szyzsq.frxm}" ></input>
+				<input id="frxm" name="frxm" type="text" value ="${szyzsq.frxm}"  ></input>
 				</td>
 			</tr>
 			<tr>
@@ -94,7 +112,7 @@
 			<tr>
 				<td>&nbsp;</td>
 				<td>
-					<input type = 'button'	onclick="this.form.submit();inputApplyPrint()" value='提交'></input>
+					<input type = 'button'	onclick="isnull()" value='提交'></input>
 				</td>
 			</tr>
 		</table>
