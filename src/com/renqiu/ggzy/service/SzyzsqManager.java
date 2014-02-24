@@ -3,11 +3,10 @@ package com.renqiu.ggzy.service;
 import java.lang.reflect.InvocationTargetException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.Map; 
 
 import javax.annotation.Resource;
 
@@ -21,19 +20,12 @@ import org.activiti.engine.history.HistoricProcessInstance;
 import org.activiti.engine.history.HistoricProcessInstanceQuery;
 import org.activiti.engine.history.HistoricTaskInstance;
 import org.activiti.engine.identity.User;
-import org.activiti.engine.impl.TaskServiceImpl;
-import org.activiti.engine.impl.pvm.PvmActivity;
-import org.activiti.engine.impl.pvm.PvmTransition;
-import org.activiti.engine.impl.pvm.process.ActivityImpl;
-import org.activiti.engine.impl.pvm.process.ProcessDefinitionImpl;
 import org.activiti.engine.repository.ProcessDefinition;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.runtime.ProcessInstanceQuery;
 import org.activiti.engine.task.Task;
 import org.activiti.engine.task.TaskQuery;
 import org.apache.commons.beanutils.BeanUtils;
-import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateUtils;
 import org.slf4j.Logger;
@@ -52,8 +44,6 @@ import com.renqiu.demo.activiti.entity.oa.Leave;
 import com.renqiu.demo.activiti.service.oa.leave.LeaveManager;
 import com.renqiu.demo.activiti.util.Page;
 import com.renqiu.demo.activiti.util.Variable;
-import com.renqiu.ggzy.activiti.JumpTaskCmd;
-import com.renqiu.ggzy.activiti.ProcessService;
 import com.renqiu.ggzy.dao.SzyzsqDao;
 import com.renqiu.ggzy.entity.Szyzsq;
 import com.renqiu.ggzy.util.DateUtil;
@@ -82,8 +72,7 @@ public class SzyzsqManager {
 	FormService formService;
 	@Resource
 	private SzyzsqDao szyzsqDao;
-	@Resource
-	private ProcessService processService ;
+
 	public Szyzsq getSzyzsq(Long id) {
 		return szyzsqDao.findOne(id);
 	}
@@ -130,13 +119,10 @@ public class SzyzsqManager {
 		getProcessInfo(model);
 		return model;
 	}
-
-	public boolean canComplete(String taskId) {
-		Date endTime = historyService.createHistoricTaskInstanceQuery()
-				.taskId(taskId).singleResult().getEndTime();
-		return endTime == null ? true : false;
+	public boolean canComplete(String taskId){
+		Date endTime = historyService.createHistoricTaskInstanceQuery().taskId(taskId).singleResult().getEndTime();
+			return endTime==null?true:false;
 	}
-
 	public Szyzsq getCurrentProcessInfo(String taskId) {
 		Task task = this.getTask(taskId);
 		String formKey = this.getFormKey(taskId);
@@ -310,7 +296,7 @@ public class SzyzsqManager {
 					commentMessage == null ? "" : commentMessage);
 			taskService.setAssignee(taskId, assignee);
 			taskService.complete(taskId, variables);
-
+			
 			return "success";
 		} catch (Exception e) {
 			logger.error("error on complete task {}, variables={}",
@@ -319,52 +305,8 @@ public class SzyzsqManager {
 		}
 	}
 
-	public String rejectTask(Szyzsq szyzsq, String taskId,
-			Map<String, Object> variables, String assignee,
-			String commentMessage) {
-		// 当前任务
-		Task task = taskService.createTaskQuery().taskId(taskId).singleResult();
-		try {
-			List<ActivityImpl> list = processService.findBackAvtivity(taskId);
-			if (CollectionUtils.isNotEmpty(list)) {
-				identityService.setAuthenticatedUserId(assignee);
-				processService.backProcess(taskId, list.get(list.size() - 1)
-						.getId(), variables, commentMessage);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			return e.getMessage();
-		}
-		return "sucess";
-	}
-
-	private List<ActivityImpl> getPreActivityImpls(Task task) {
-		// historyService.createHistoricActivityInstanceQuery().processInstanceId("").
-
-		// 根据当前任务找到前序迁移线
-		ProcessDefinitionImpl processDefinition = (ProcessDefinitionImpl) this.repositoryService
-				.getProcessDefinition(task.getProcessDefinitionId());
-		ActivityImpl activityImpl = processDefinition.findActivity(task
-				.getTaskDefinitionKey());
-		// 入口迁移线
-		List<PvmTransition> pvmTransitions = activityImpl
-				.getIncomingTransitions();
-		// 根据入口迁移找到对应的活动
-		int loop = pvmTransitions.size();
-		for (int i = 0; i < loop; i++) {
-			PvmTransition pvmTransition = pvmTransitions.get(i);
-			PvmActivity pvmActivity = pvmTransition.getSource();
-			historyService.createHistoricTaskInstanceQuery()
-					.taskDefinitionKey(pvmActivity.getId()).finished()
-					.processInstanceId(task.getProcessInstanceId());
-		}
-		// historyService.createHistoricTaskInstanceQuery().taskParentTaskId(parentTaskId)
-		return null;
-	}
-
 	/**
-	 * 根据法人身份证号和办理人id查找待办 <br>
-	 * TODO 如果该法人身份证的待办是别人办理的，这里就查不出来了，暂时不使用userId进行过滤
+	 * 根据法人身份证号和办理人id查找待办 TODO 如果该法人身份证的待办是别人办理的，这里就查不出来了，暂时不使用userId进行过滤
 	 * 
 	 * @param frsfzh
 	 * @param userId

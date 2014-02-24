@@ -2,7 +2,7 @@ $(function() {
 	$('#portlet-container').portlet({
 		sortable: true,
 		columns: [{
-			width: 500,
+			width: 500, 
 			portlets: [{
 				title: '待办任务',
 				content: {
