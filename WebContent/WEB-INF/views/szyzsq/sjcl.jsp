@@ -10,7 +10,7 @@
 			location.href = '${ctx}/login?timeout=true';
 		}
 	</script>
-	<title>工商窗口办理</title>
+	<title>收集材料及代收费</title>
 	<%@ include file="/common/meta.jsp" %>
     <%@ include file="/common/include-base-styles.jsp" %>
     <%@ include file="/common/include-jquery-ui-theme.jsp" %>
@@ -69,6 +69,13 @@
 				<td>
 				${szyzsq.lxfs}
 				<input id="lxfs" name="lxfs" type="hidden" value ="${szyzsq.lxfs}" ></input>
+				</td>
+			</tr>
+					<tr>
+				<td>公司核准名称：</td>
+				<td>
+				${szyzsq.qymc}
+				<input id="qymc" name="qymc" type="hidden" value ="${szyzsq.qymc}" ></input>
 				</td>
 			</tr>
 			<tr>	

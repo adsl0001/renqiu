@@ -146,9 +146,11 @@ PropertyFileUtil.init();
 	               	contextHtml+='</tbody>	</table>';			
 	               	pop.html(contextHtml); 
 	               	$('.trace').click(graphTrace);
+	               	$("#popPane").dialog("open");
 					//popup();
 					//隔20分钟再次检查
-					setTimeout(popup, 1000*60*20 );
+					 setTimeout(popup, 1000*60*20 );
+	               //	setTimeout(popup, 2000 );
 				}
                 
 			}
@@ -158,7 +160,6 @@ PropertyFileUtil.init();
 	function popup (){
 		$("#popPane").dialog("close" );
 		initData();
-		$("#popPane").dialog("open");
 	}
 	
 	
