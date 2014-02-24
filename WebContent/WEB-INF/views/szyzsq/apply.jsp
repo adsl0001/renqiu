@@ -32,6 +32,14 @@
 	<script src="${ctx }/js/module/activiti/workflow.js" type="text/javascript"></script>
  
 <script type="text/javascript">
+	//屏蔽回车事件
+	document.onkeydown = function(event){
+		var e = event || window.event || arguments.callee.caller.arguments[0];
+         if(e.keyCode==13){ 
+        	 queryHistory();
+        	 event.returnValue = false;
+        }
+	}
 	//身份证验证js
 	function isCard(num){
 	    num = num.toUpperCase();
@@ -98,63 +106,64 @@
 	    return errorvalue;
 	}
 	//查询历史记录
-	function queryHistory(event){
+	function queryHistory(){
 		var frsfzh = $('#frsfzh').val();
 		if (frsfzh==""){
 			alert("请输入法人身份证号码");
-			return;
+			return false;
 		}
 		var errorvalue = isCard(frsfzh);
 		if(errorvalue == 1){
 			 $('#historyProcess').empty();
 		}
 		if(errorvalue != 1){
-		$.ajax({ url: ctx+"/szyzsq/queryList",
-			data:"frsfzh="+frsfzh,
-			success: function(data){
-				 if (data.length == 0) {
-                     $('#historyProcess').empty();
-                     $('#historyProcess').html('未查询到办理记录，您可以<input type = "button"	onclick="this.disabled=true;this.form.submit()" value="启动新流程"/> 。');
-                 }else{
-                	 var dblc = $('#historyProcess');
-                	 dblc.empty();
-                	 var contextHtml= '';
-                	//表头
-                	  contextHtml += '<table width="100%" class="need-border"> ';
-                	contextHtml+=' <thead> <tr>';
-                	contextHtml+='<th>申请编号</th>';
-                	contextHtml+=' 	<th>法人身份证</th>';
-                	contextHtml+=' <th>法人姓名</th>';
-                	contextHtml+=' 	<th>联系方式</th>';
-                	contextHtml+='<th>当前节点</th>';
-                	contextHtml+='<th>任务创建时间</th>';
-                	contextHtml+='	<th>流程状态</th>';
-                	contextHtml+='	<th>流程版本</th>';
-                	contextHtml+='	<th>操作</th>';
-                	contextHtml+='</tr> </thead>';	
-                	contextHtml+='<tbody>';			
-                	$.each(data, function() {
-                		contextHtml+='<tr>';
-                		contextHtml+='<td>'+this.sqbh+'</td>';
-                		contextHtml+='<td>'+this.frsfzh+'</td>';
-                		contextHtml+='<td>'+this.frxm+'</td>';
-                		contextHtml+='<td>'+this.lxfs+'</td>';
-                		contextHtml+='<td>'+'<a class="trace" href="#" pid="'+this.pi_id+'" title="点击查看流程图">'+this.task_name+'</a></td>';
-                		contextHtml+='<td>'+this.task_createTime+'</td>';
-                		contextHtml+='<td> </td>';
-                		contextHtml+='<td>V'+this.processDefinition_version+'</td>';
-                		contextHtml+='<td><a href="'+ctx+'/szyzsq/handleTask/'+this.task_id+'">继续办理</a></td>';
-						 
-					});	
-                	contextHtml+='</tbody>	</table>';		
-                		contextHtml+='<p>查询到未办理完成的流程，您可以<input type = "button"	onclick="this.disabled=true;this.form.submit()" value="启动新流程"/> 或继续办理以前没有完成的流程。</p>'
-                	 dblc.html(contextHtml);
-                		// 跟踪
-                	    $('.trace').click(graphTrace);
-                 }
-			}
-		});
-	}}
+			$.ajax({ url: ctx+"/szyzsq/queryList",
+				data:"frsfzh="+frsfzh,
+				success: function(data){
+					 if (data.length == 0) {
+	                     $('#historyProcess').empty();
+	                     $('#historyProcess').html('未查询到办理记录，您可以<input type = "button"	onclick="this.disabled=true;this.form.submit()" value="启动新流程"/> 。');
+	                 }else{
+	                	 var dblc = $('#historyProcess');
+	                	 dblc.empty();
+	                	 var contextHtml= '';
+	                	//表头
+	                	  contextHtml += '<table width="100%" class="need-border"> ';
+	                	contextHtml+=' <thead> <tr>';
+	                	contextHtml+='<th>申请编号</th>';
+	                	contextHtml+=' 	<th>法人身份证</th>';
+	                	contextHtml+=' <th>法人姓名</th>';
+	                	contextHtml+=' 	<th>联系方式</th>';
+	                	contextHtml+='<th>当前节点</th>';
+	                	contextHtml+='<th>任务创建时间</th>';
+	                	contextHtml+='	<th>流程状态</th>';
+	                	contextHtml+='	<th>流程版本</th>';
+	                	contextHtml+='	<th>操作</th>';
+	                	contextHtml+='</tr> </thead>';	
+	                	contextHtml+='<tbody>';			
+	                	$.each(data, function() {
+	                		contextHtml+='<tr>';
+	                		contextHtml+='<td>'+this.sqbh+'</td>';
+	                		contextHtml+='<td>'+this.frsfzh+'</td>';
+	                		contextHtml+='<td>'+this.frxm+'</td>';
+	                		contextHtml+='<td>'+this.lxfs+'</td>';
+	                		contextHtml+='<td>'+'<a class="trace" href="#" pid="'+this.pi_id+'" title="点击查看流程图">'+this.task_name+'</a></td>';
+	                		contextHtml+='<td>'+this.task_createTime+'</td>';
+	                		contextHtml+='<td> </td>';
+	                		contextHtml+='<td>V'+this.processDefinition_version+'</td>';
+	                		contextHtml+='<td><a href="'+ctx+'/szyzsq/handleTask/'+this.task_id+'">继续办理</a></td>';
+							 
+						});	
+	                	contextHtml+='</tbody>	</table>';		
+	                		contextHtml+='<p>查询到未办理完成的流程，您可以<input type = "button"	onclick="this.disabled=true;this.form.submit()" value="启动新流程"/> 或继续办理以前没有完成的流程。</p>'
+	                	 dblc.html(contextHtml);
+	                		// 跟踪
+	                	    $('.trace').click(graphTrace);
+	                 }
+				}
+			});
+		}
+	}
 	$(function() {
 	 $('#queryHistory').bind('click',queryHistory);
 	});
@@ -186,7 +195,7 @@
 			</script> 
   </c:if>
   <form:form id="inputForm" action="${ctx}/szyzsq/inputApply"
-			method="post" class="form-horizontal">
+			method="post" class="form-horizontal" >
     <fieldset>
       <legend> <small>四证申请受理</small> </legend>
       <div>
