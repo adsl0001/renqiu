@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" style="height:100%;">
 <head>
-<link href="css/login.css" rel="stylesheet">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<%@ include file="/common/global.jsp"%>
 	<title>企业注册四证联办监管系统登录</title>
 	<script>
@@ -15,79 +15,45 @@
 	<%@ include file="/common/meta.jsp" %>
 	<%@ include file="/common/include-jquery-ui-theme.jsp" %>
     <%@ include file="/common/include-base-styles.jsp" %>
-    <style type="text/css">
-        .login-center {
-            width: 600px;
-            margin-left:auto;
-            margin-right:auto;
-        }
-        #loginContainer {
-            margin-top: 3em;
-        }
-        .login-input {
-            padding: 4px 6px;
-            font-size: 14px;
-            vertical-align: middle;
-        }
-    </style>
-
-    <script src="${ctx }/js/common/jquery-1.8.3.js" type="text/javascript"></script>
-    <script src="${ctx }/js/common/plugins/jui/jquery-ui-${themeVersion }.min.js" type="text/javascript"></script>
-    <script type="text/javascript">
-	$(function() {
-		$('button').button({
-			icons: {
-				primary: 'ui-icon-key'
-			}
-		});
-	});
-	</script>
+    <link rel="stylesheet" href="${ctx }/css/login.css" type="text/css"  > 
+    
 </head>
 
-<body>
-    <div id="loginContainer" class="login-center">
-        <c:if test="${not empty param.error}">
+<body class="tbody">
+	<div class="wrap">
+ 	
+ 		<div class="login-top">
+ 			<div class="alertMessage">  <c:if test="${not empty param.error}">
             <h2 id="error" class="alert alert-error">用户名或密码错误！！！</h2>
         </c:if>
         <c:if test="${not empty param.timeout}">
             <h2 id="error" class="alert alert-error">未登录或超时！！！</h2>
-        </c:if>
-
-		<div style="text-align: center;">
-            <h2>企业注册四证联办监管系统</h2>
+        </c:if></div>
 		</div>
-		<hr />
-		<form action="${ctx }/user/logon" method="get">
-			<table>
-				<tr>
-					<td width="200" style="text-align: right;">用户名：</td>
-					<td><input id="username" name="username" class="login-input" placeholder="用户名" /></td>
-				</tr>
-				<tr>
-					<td width="200" style="text-align: right;">密码：</td>
-					<td><input id="password" name="password" type="password" class="login-input" placeholder="密码" /></td>
-				</tr>
-				<tr>
-					<td>&nbsp;</td>
-					<td>
-						<button type="submit">登录系统</button> <a href="${ctx }/query/public/30" target="blank">查看公示信息</a>
-					</td>
-				</tr>
-			</table>
-		</form>
-		<hr />
-		<div>
-            
+		<div class="login">
+			<div class="logo">
+				<img src="${ctx }/images/word.png" />
+			</div>
+			<form action="${ctx }/user/logon" method="get">
+			<div class="content">
+				<div class="c-left">
+					<div class="text-div">
+						<label></label>
+						<span><input id="username" name="username" class="login-input" placeholder="用户名" /></span>
+					</div>
+					<div class="text-div">
+						<label></label>
+						<span><input id="password" name="password" type="password" class="login-input" placeholder="密码" /></span>
+					</div>
+				</div>
+				
+					<div class="c-right">
+						<button class="login-button">登录</button>
+						<a href="${ctx }/query/public/30" target="blank">查看公示信息</a>
+					</div>
+			</div>
+			</form>
 		</div>
-     
-        <div>
-            <div style="float:left; width: 50%;">
-                
-            </div>
-            <div style="float:right; width: 50%;">
-                
-            </div>
-        </div>
-    </div>
+	</div>
 </body>
 </html>

@@ -50,7 +50,7 @@ public class UserControllerTest extends SpringTransactionalTestCase {
 		c.setIdentityService(identityService);
 		MockHttpSession session = new MockHttpSession();
 		String view = c.logon("nothisuser", "000000", session);
-		assertEquals("redirect:/login", view);
+		assertEquals("redirect:/login?error=true", view);
 	}
 
 }

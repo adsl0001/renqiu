@@ -19,7 +19,7 @@ ol,ul {
 
 
 h1,h2,h3,h4,h5,h6 {
-	font-size:100%;
+	font-size:1.5em;
 	font-weight:500;
 }
 
@@ -54,14 +54,24 @@ a {
 .content{padding-top:11px;}
 .login{width:448px; height:265px; position:absolute; left:50%; top:50%; margin:-132px -224px; background:url(../images/login/loginbg.png) no-repeat; z-index:888;}
 .login .logo{text-align:left;}
+.alertMessage{
+	left: 50%;
+    margin-left: -200px;
+    margin-top: -200px;
+    position: absolute;
+    top: 50%;
+    width: 400px;
+    z-index: 888;
+    text-align: center;
+	}
 .c-left,.c-right{float:left; display:inline; margin-left:77px;}
 .c-left{width:289px;}
 .c-right{text-align:left; margin-top:12px; margin-left:190px; line-height:26px;}
-.c-left label{color:#fff; float:left; width:72px; text-align:center; height:28px; line-height:28px; background:url(../images/userinco.png) no-repeat;}
+.c-left label{color:#fff; float:left; width:72px; text-align:center; height:28px; line-height:28px; background:url(../images/login/userinco.png) no-repeat;}
 .text-div{float:left; clear:both; margin-top:8px; display:inline; width:289px;}
-.textspan{background:url(../images/loginincos.png) no-repeat; float:left; width:183px; height:27px;}
+.textspan{background:url(../images/login/loginincos.png) no-repeat; float:left; width:183px; height:27px;}
 .password{background-position: 0 -56px;}
 .textspan .texts{border:0; background:none; float:left; width:172px; height:18px; margin-top:4px; margin-left:5px; line-height:18px;}
-.login-button{border:none; cursor:pointer; outline:none; background:url(../images/loginbu.png) no-repeat right 0; width:62px; height:25px; font-size:0; line-height:0; color:#242628; float:left; margin-right:15px;}
+.login-button{border:none; cursor:pointer; outline:none; background:url(../images/login/loginbu.png) no-repeat right 0; width:62px; height:25px; font-size:0; line-height:0; color:#242628; float:left; margin-right:15px;}
 
 .c-right a{color:#4c4747; text-decoration:underline;}
