@@ -50,6 +50,7 @@
     	else if(qymclen == ""){
     		alert("公司核准名称不能为空");
     	}else if(frxmlen != ""&& lxfslen != "" && qymclen != ""){
+<<<<<<< HEAD
     		button.disabled=true;
     		$.ajax({
     			url: ctx+"/szyzsq/completeTask",
@@ -62,6 +63,11 @@
     				}
     		});
 	  		
+=======
+    		this.disabled=true;
+    		inputForm.submit();
+	  		inputApplyPrint();
+>>>>>>> refs/remotes/origin/master
     	}
     }
     </script>

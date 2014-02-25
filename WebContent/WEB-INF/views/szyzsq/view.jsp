@@ -123,11 +123,24 @@
 				<td>&nbsp; </td>
 				<td>
 					<input type = "button"	onclick="this.disabled=true;this.form.submit()" value="提交"/> 
+					&nbsp;
+					<input type = "button"	onclick="this.disabled=true;goBack();" value="退回上一步"/> 
 				</td>
 			</tr>
 		</table>
 		</fieldset>
 	</form:form>
 	</div>
+<%-- 	<form:form id="goBackForm" action="${ctx}/szyzsq/rejectTask" method="post" class="form-horizontal"> --%>
+<%-- 		<input type="hidden"  name = "taskId" value ="${szyzsq.task.id}"></input> --%>
+<!-- 		<input id="backMessage" name="commentMessage" type="hidden" value ="" ></input> -->
+<!-- 		<input></input> -->
+<%-- 	</form:form> --%>
+	<script type="text/javascript">
+	function goBack (){
+		$("#backMessage").val($("#reason").val());
+		$("#goBackForm").submit();
+	}
+	</script>
 </body>
 </html>

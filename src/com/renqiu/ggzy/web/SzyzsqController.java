@@ -161,6 +161,32 @@ public class SzyzsqController {
 		return "redirect:/szyzsq/todoList";
 	}
 
+	private static String[] taskIds = { "zonghe_start", "usertask29",
+			"gongshang_start", "usertask4", "usertask23", "usertask11",
+			"usertask10", "usertask12", "usertask13", "usertask14",
+			"usertask24", "usertask25" };
+	private static String[] preTaskId = { "", "zonghe_start", 
+			"usertask29","gongshang_start", "gongshang_start", "gongshang_start", 
+			"gongshang_start","?", "usertask12", "?", 
+			"usertask14","usertask24" };
+
+	@RequestMapping(value = "rejectTask")
+	public String rejectTask(String taskId, String assignee,
+			String commentMessage, HttpSession session) {
+		User user = UserUtil.getUserFromSession(session);
+		// 用户未登录不能操作，实际应用使用权限框架实现，例如Spring Security、Shiro等
+		if (user == null || StringUtils.isBlank(user.getId())) {
+			return "redirect:/login?timeout=true";
+		}
+		if (StringUtils.isEmpty(assignee)) {
+			assignee = user.getId();
+		}
+		Map paramMap = new HashMap();
+		this.szyzsqManager.rejectTask(null, taskId, paramMap, assignee,
+				commentMessage);
+		return "redirect:/szyzsq/todoList";
+	}
+
 	/**
 	 * 工商窗口审核
 	 * 

@@ -132,7 +132,7 @@
 			<tr>
 				<td>&nbsp;</td>
 				<td>
-					<button type="submmit">提交</button>
+					<input type = "button"	onclick="this.disabled=true;this.form.submit()" value="提交"/> 
 				</td>
 			</tr>
 		</table>
