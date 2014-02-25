@@ -16,7 +16,7 @@
 	<%@ include file="/common/include-jquery-ui-theme.jsp" %>
     <%@ include file="/common/include-base-styles.jsp" %>
     <link rel="stylesheet" href="${ctx }/css/login.css" type="text/css"  > 
-    
+    <link rel="shortcut icon" href="${ctx }/images/favicon.ico" />
 </head>
 
 <body class="tbody">
@@ -38,11 +38,11 @@
 			<div class="content">
 				<div class="c-left">
 					<div class="text-div">
-						<label></label>
+						<label class="usernameLabel"></label>
 						<span><input id="username" name="username" class="login-input" placeholder="用户名" /></span>
 					</div>
 					<div class="text-div">
-						<label></label>
+						<label class="passwordLabel"></label>
 						<span><input id="password" name="password" type="password" class="login-input" placeholder="密码" /></span>
 					</div>
 				</div>

@@ -18,6 +18,7 @@ PropertyFileUtil.init();
     <title>企业注册四证联办监管系统</title>
     <%@ include file="/common/include-base-styles.jsp" %>
 	<%@ include file="/common/include-jquery-ui-theme.jsp" %>
+	<link rel="shortcut icon" href="${ctx }/images/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="${ctx }/css/menu.css" />
     <%@ include file="/common/include-custom-styles.jsp" %>
 	<link href="${ctx }/css/main.css" type="text/css" rel="stylesheet"/>

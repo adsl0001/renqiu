@@ -27,6 +27,19 @@
 </head>
 
 <body>
+	<script type="text/javascript">
+		function changeSelect(me){
+			var value =$(me).val();
+			if(value==0){
+				$("#reasonDiv").hide();
+				$("#reasonSelect").html("<option>同意受理</option>");
+			}else{
+				$("#reasonDiv").show();
+				$("#reasonSelect").html("<option>材料不全</option><option>材料不全等其他原因</option>");
+			}
+			
+		}
+		</script>
 	<div class="container showgrid">
 	<c:if test="${not empty message}">
 		<div id="message" class="alert alert-success">${message}</div>
@@ -58,7 +71,7 @@
 		
 			<table border="1">
 			<tr>
-				<td>法人身份证号：</td>
+				<td style="width:30%;">法人身份证号：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 				<td>
 				 ${szyzsq.frsfzh}
 				 <input name="frsfzh" type="hidden" value ="${szyzsq.frsfzh}">
@@ -83,20 +96,23 @@
 			</tr>
 			<tr>	 <td>&nbsp;</td>
 				<td>
-					<input type="radio" name="input" value="0" checked onclick="$('#reasonDiv').hide();">同意受理&nbsp;
-					<input type="radio" name="input" value="1" onclick="$('#reasonDiv').show();">拒绝受理 
+					<input  type="radio" name="input" value="0" checked onclick="changeSelect(this)">同意受理&nbsp;
+					<input  type="radio" name="input" value="1" onclick="changeSelect(this)">拒绝受理
+				
 				</td>
 			</tr>
-			<tr>
-			<div id="reasonDiv"><td>办理结果:</td>
-				<td><select style="width: 300px;" id="reason" name = "commentMessage" placeholder="审批意见">  
-				<option>同意受理</option>
-				<option>材料不全</option>
-				<option>材料不全等其他原因</option>
-				</select>
+			<tr id="reasonDiv" style=" display:none;">
+				 
+				 <td> 办理结果:</td><td><select id="reasonSelect" style="width: 300px;" id="reason" name = "commentMessage" placeholder="审批意见">  
+						<option>同意受理</option>
+						<option>材料不全</option>
+						<option>材料不全等其他原因</option>
+					</select>
 <!-- 				<textarea  rows="2" cols="2" id="reason" name="commentMessage" placeholder="审批意见"></textarea> -->
-				</td>
-			</div>
+				</td> 
+				 
+				
+			
 			 </tr>
 			  <tr>
 			 <td colspan="2">
