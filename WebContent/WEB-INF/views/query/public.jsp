@@ -26,11 +26,11 @@
 
 <body>
  <style>
-/*  .toggler { width: 500px; height: 200px; } */
-  #effect { width: 100% ; height: 100%; padding: 0.4em; position: relative; }
-  #effect h3 { margin: 0; padding: 0.4em; text-align: center; }
-  #caption  { width: 100%; height: 100%; padding: 0.4em; position: relative; }
-  #caption h3 { margin: 0; padding: 0.4em; text-align: center; }
+   .toggler { /* width: 500px; height: 200px;  */}  
+  #effect { width: 100% ; height: 100%; /* padding: 0.4em; */ position: relative; }
+  #effect h3 { margin: 0;   padding: 0.4em;   text-align: center; }
+  #caption  { /* width: 100%;  */height: 100%; /* padding: 0.4em; */ position: relative; }
+  #caption h3 { margin: 0;  padding: 0.4em;  text-align: center; }
   </style>
   <script>
   $(function() {
@@ -92,7 +92,6 @@
  	};
  	 $( "#effect" ).hide();
  	initData(currentPage,pageSize);
-   
     runEffect();
   });
   </script>

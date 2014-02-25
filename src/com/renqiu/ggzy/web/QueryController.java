@@ -172,6 +172,49 @@ public class QueryController {
 	}
 
 	/**
+	 * 大厅公示
+	 * 
+ 
+	 * @param timeout 切换时间 ，单位是秒
+	 * @param session
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "publicInfo/{timeout}")
+	public ModelAndView dating(@PathVariable("timeout") String timeout,
+			HttpSession session, HttpServletRequest request) {
+		queryManager.find(null, null);
+		int i_timeout = 1000 * 60;
+		if (NumberUtils.isNumber(timeout)) {
+			i_timeout = NumberUtils.toInt(timeout);
+			i_timeout = i_timeout * 1000;
+		}
+		ModelAndView modelAndView = new ModelAndView("query/dating");
+		modelAndView.addObject("timeout", i_timeout);
+		return modelAndView;
+	}
+	/**
+	 * 显示照片
+	 * 
+ 
+	 * @param session
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "showPhoto/{timeout}")
+	public ModelAndView showPhoto(@PathVariable("timeout") String timeout,
+			HttpSession session, HttpServletRequest request) {
+		queryManager.find(null, null);
+		int i_timeout = 1000 * 60;
+		if (NumberUtils.isNumber(timeout)) {
+			i_timeout = NumberUtils.toInt(timeout);
+			i_timeout = i_timeout * 1000;
+		}
+		ModelAndView modelAndView = new ModelAndView("query/zhaopian");
+		modelAndView.addObject("timeout", i_timeout);
+		return modelAndView;
+	}	 
+	/**
 	 * 公示页面
 	 * 
 	 * @return
@@ -347,15 +390,13 @@ public class QueryController {
 		return view;
 	}
 
- 
-
 	@RequestMapping(value = "queryTimeoutTask")
 	@ResponseBody
-	public  List<Map<String, Object>> queryTimeoutTask(HttpSession session) {
+	public List<Map<String, Object>> queryTimeoutTask(HttpSession session) {
 		Calendar now = Calendar.getInstance();
 		User user = UserUtil.getUserFromSession(session);
-		List<Map<String, Object>> list = new ArrayList<Map<String,Object>>();
-		Map<String, Object> map ;
+		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+		Map<String, Object> map;
 		// 用户未登录不能操作，实际应用使用权限框架实现，例如Spring Security、Shiro等
 		if (user == null || StringUtils.isBlank(user.getId())) {
 			return list;
@@ -364,19 +405,21 @@ public class QueryController {
 		// 在现在之后的是即将超期的
 		List<Task> taskList = taskService.createTaskQuery().active()
 				.taskAssignee(user.getId()).dueAfter(now.getTime()).list();
-		 
+
 		// 判断是否需要提醒
 		for (Task task : taskList) {
 			// TODO 根据超期时间点设置 判断是否是即将超期的任务
 			map = new HashMap<String, Object>();
 			map.put("taskId", task.getId());
-			map.put("createTime", DateUtil.getDateFormatString( task.getCreateTime(),DateUtil.STANDARD_DATETIME_FORMAT));
+			map.put("createTime", DateUtil.getDateFormatString(
+					task.getCreateTime(), DateUtil.STANDARD_DATETIME_FORMAT));
 			map.put("taskName", task.getName());
 			map.put("pid", task.getProcessInstanceId());
-			map.put("dueDate", DateUtil.getDateFormatString( task.getDueDate(),DateUtil.STANDARD_DATETIME_FORMAT));
+			map.put("dueDate", DateUtil.getDateFormatString(task.getDueDate(),
+					DateUtil.STANDARD_DATETIME_FORMAT));
 			list.add(map);
 		}
 		return list;
 	}
- 
+
 }
