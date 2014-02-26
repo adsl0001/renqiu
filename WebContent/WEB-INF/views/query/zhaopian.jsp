@@ -16,16 +16,16 @@
 </style>
 </head>
 <body>
-  <div id="context" class="context"><div id="gundong" style="width:800px;height:600px;">aaaaaaaaaaaaab</div></div>
+  <div id="context1" class="context"><div id="gundong" style="width:800px;height:600px;">服务大家，竭诚奉献</div></div>
  
  <script type="text/javascript">
  
    $( function(){
     $( "#gundong" ).bgStretcher({
       images: [ctx+'/photo/f01.jpg', ctx+'/photo/f02.jpg', ctx+'/photo/f03.jpg', ctx+'/photo/f04.jpg'],
- 				// slideShow: true,
+ 				  slideShow: true,
                     transitionEffect: "superSlide",
-             slideDirection: 'W',
+             slideDirection: 'NW',
              nextSlideDelay:2000,
              slideShowSpeed:'slow',
              imageWidth: 1600,

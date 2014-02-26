@@ -13,6 +13,7 @@
     <link href="${ctx }/js/common/plugins/jui/extends/timepicker/jquery-ui-timepicker-addon.css" type="text/css" rel="stylesheet" />
     <link href="${ctx }/js/common/plugins/qtip/jquery.qtip.min.css" type="text/css" rel="stylesheet" />
     <%@ include file="/common/include-custom-styles.jsp" %>
+    <link rel="shortcut icon" href="${ctx }/images/favicon.ico" />
 
     <script src="${ctx }/js/common/jquery-1.8.3.js" type="text/javascript"></script>
     <script src="${ctx }/js/common/plugins/jui/jquery-ui-${themeVersion }.min.js" type="text/javascript"></script>
@@ -29,6 +30,7 @@
    .toggler { /* width: 500px; height: 200px;  */}  
   #effect { width: 100% ; height: 100%; /* padding: 0.4em; */ position: relative; }
   #effect h3 { margin: 0;   padding: 0.4em;   text-align: center; }
+  
   #caption  { /* width: 100%;  */height: 100%; /* padding: 0.4em; */ position: relative; }
   #caption h3 { margin: 0;  padding: 0.4em;  text-align: center; }
   </style>
@@ -60,12 +62,12 @@
                	contextHtml+='<tbody>';			
                	$.each(page.result, function() {
                		contextHtml+='<tr>';
-               		contextHtml+='<td><center>'+this.sbsj+'</center></td>';
-               		contextHtml+='<td><center>'+this.lsh+'</center></td>';
-               		contextHtml+='<td><center>'+'四证联办流程'+'</center></td>';
-               		contextHtml+='<td><center>'+this.lczt+' </center></td>';
-               		contextHtml+='<td><center>'+this.dqhj+'</center></td>';
-               		contextHtml+='<td><center>'+this.sfcq+'</center></td>';
+               		contextHtml+='<td><font size ="5px"><center>'+this.sbsj+'</center></font></td>';
+               		contextHtml+='<td><font size ="5px"><center>'+this.lsh+'</center></font></td>';
+               		contextHtml+='<td><font size ="5px"><center>'+'四证联办流程'+'</center></font></td>';
+               		contextHtml+='<td><font size ="5px"><center>'+this.lczt+' </center></font></td>';
+               		contextHtml+='<td><font size ="5px"><center>'+this.dqhj+'</center></font></td>';
+               		contextHtml+='<td><font size ="5px"><center>'+this.sfcq+'</center></font></td></tr>';
 				});	
                	contextHtml+='</tbody>	</table>';			
                	 dblc.html(contextHtml);
@@ -105,8 +107,8 @@
      <div id="effect" >
     	<table width="100%" class="need-border">
 		<thead>
-			<tr>
-				<th>申报时间</th>
+			<tr class="h1">
+				<t>申报时间</th>
 				<th>流水号</th>
 				<th>办理事项</th>
 				<th>流程状态</th>

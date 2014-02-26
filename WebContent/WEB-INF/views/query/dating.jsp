@@ -36,12 +36,13 @@
 	 $.ajax({
 		 url:getNextUrl(),
 		 success: function(data){
-			 $( "#container:visible" ).removeAttr( "style" ).fadeOut(
+			 $( "#ccccxxxx:visible" ).removeAttr( "style" ).fadeOut(
 					 function(){
-						 $("#container").html(data); 
+						 $("#ccccxxxx").html(data); 
+						 //$("#container").css("opacity","1"); 
 						  var selectedEffect = 'blind';
 					      var options = {};
-					      $( "#container" ).show( selectedEffect, options, 500,  function(){
+					      $( "#ccccxxxx" ).show( selectedEffect, options, 500,  function(){
 					    	  setTimeout( changePage, timeout );
 					      } );
 					 }
@@ -52,8 +53,8 @@
  
  }
 
- var allUrl =[ctx+"/query/public/30",
-              ctx+"/query/showPhoto/30"];
+ var allUrl =[ctx+"/query/public/30",ctx+"/query/public/30",
+              ctx+"/query/showPhoto/30",ctx+"/query/public/30"];
  var currentIndex=0;
  function getNextUrl(){
 	 if(currentIndex==allUrl.length)
@@ -66,8 +67,8 @@
  		changePage();
  	});
  </script>
-<div id="container" class="">
-  
+<div id="containera" class="" style="opacity:1;">
+  <div id="ccccxxxx"></div>
 </div>
   
  
