@@ -12,24 +12,31 @@
 <title> </title>
 
 <style type="text/css">
-.context{ width:800px; height: 600px; position: absolute;margin-top: -300px; margin-left: -400px; left: 50%; top: 50%; }
+.context{ width:700px; height: 600px; position: absolute;margin-top: -300px; margin-left: -350px; left: 50%; top: 50%; }
 </style>
 </head>
 <body>
-  <div id="context1" class="context"><div id="gundong" style="width:800px;height:600px;">服务大家，竭诚奉献</div></div>
+  <div id="context1" class="context"><div id="gundong" style="width:700px;height:600px;"></div></div>
  
  <script type="text/javascript">
  
    $( function(){
+	   var path = ctx+"/photo/";
+	   var images=[path+"1.jpg",
+	               path+"2.jpg",
+	               path+"3.jpg",
+	               path+"4.jpg",
+	               path+"5.jpg",
+	               path+"6.jpg"];
     $( "#gundong" ).bgStretcher({
-      images: [ctx+'/photo/f01.jpg', ctx+'/photo/f02.jpg', ctx+'/photo/f03.jpg', ctx+'/photo/f04.jpg'],
+      images: images,
  				  slideShow: true,
-                    transitionEffect: "superSlide",
+             transitionEffect: "superSlide",
              slideDirection: 'NW',
-             nextSlideDelay:2000,
-             slideShowSpeed:'slow',
-             imageWidth: 1600,
-             imageHeight: 1200
+             nextSlideDelay:5000,
+             slideShowSpeed:'SLOW',
+             imageWidth: 700,
+             imageHeight: 600
     }); 
 
   });

@@ -36,7 +36,9 @@
 	 $.ajax({
 		 url:getNextUrl(),
 		 success: function(data){
-			 $( "#ccccxxxx:visible" ).removeAttr( "style" ).fadeOut(
+			 $("#ccccxxxx").html(data); 
+			 setTimeout( changePage, timeout );
+			/*  $( "#ccccxxxx:visible" ).removeAttr( "style" ).fadeOut(
 					 function(){
 						 $("#ccccxxxx").html(data); 
 						 //$("#container").css("opacity","1"); 
@@ -46,15 +48,15 @@
 					    	  setTimeout( changePage, timeout );
 					      } );
 					 }
-			  );
+			  ); */
 		    
 		 }
 	 });
  
  }
 
- var allUrl =[ctx+"/query/public/30",ctx+"/query/public/30",
-              ctx+"/query/showPhoto/30",ctx+"/query/public/30"];
+ var allUrl =[ctx+"/query/public/15",
+              ctx+"/query/showPhoto/30"];
  var currentIndex=0;
  function getNextUrl(){
 	 if(currentIndex==allUrl.length)
