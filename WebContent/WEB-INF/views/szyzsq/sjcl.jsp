@@ -20,6 +20,16 @@
     <script src="${ctx }/js/common/plugins/jui/jquery-ui-${themeVersion }.min.js" type="text/javascript"></script>
     <script src="${ctx }/js/common/plugins/jui/extends/timepicker/jquery-ui-timepicker-addon.js" type="text/javascript"></script>
 	<script src="${ctx }/js/common/plugins/jui/extends/i18n/jquery-ui-date_time-picker-zh-CN.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	    function inputApplyPrint(){
+	    	 var sqbh = $("#sqbh").val();
+	    	 /*var $tempForm = $('<form method="post" target="_blank" action="' + ctx+'/szyzsq/inputApplyPrint/'+sqbh + '"></form>');  
+	    	    $("body").append($tempForm);  
+	    	    $tempForm.submit();  
+	    	     $tempForm.remove();  */
+	    	window.open(ctx+'/szyzsq/sjtzs/'+sqbh,'newwindow','height=600,width=800');
+	    }
+	</script>
   
 </head>
 
@@ -132,7 +142,7 @@
 			<tr>
 				<td>&nbsp;</td>
 				<td>
-					<input type = "button"	onclick="this.disabled=true;this.form.submit()" value="提交"/> 
+					<input type = "button"	onclick="this.disabled=true;inputApplyPrint();this.form.submit()" value="提交"/> 
 				</td>
 			</tr>
 		</table>

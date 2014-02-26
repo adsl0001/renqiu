@@ -79,12 +79,24 @@ public class ListController {
 		Szyzsq szyzsq = new Szyzsq();
 		szyzsq.setSqbh(Long.valueOf(sqbh));
 		szyzsq = szyzsqManager.getSzyzsq(Long.valueOf(sqbh));
-//		szyzsq.setFrsfzh(frsfzh);
-//		szyzsq.setFrxm(frxm);
-//		szyzsq.setLxfs(lxfs);
-//		szyzsq.setQymc(qymc);
 		mv = new ModelAndView("/szyzsq/inputApplyPrint");
 		mv.addObject("szyzsq",szyzsq);
+		return mv;
+	}
+	// 弹出收件通知书
+	@RequestMapping(value = "sjtzs/{sqbh}")
+	public ModelAndView sjtzs( @PathVariable(value="sqbh") String sqbh ,HttpSession session) {
+		ModelAndView mv;
+		User user = UserUtil.getUserFromSession(session);
+		// 用户未登录不能操作，实际应用使用权限框架实现，例如Spring Security、Shiro等
+		if (user == null || StringUtils.isBlank(user.getId())) {
+			mv = new ModelAndView("redirect:/login?timeout=true");
+			return mv;
+		}
+		Szyzsq szyzsq = new Szyzsq();
+		szyzsq.setSqbh(Long.valueOf(sqbh));
+		mv = new ModelAndView("/szyzsq/sjtzs");
+		mv.addObject(szyzsq);
 		return mv;
 	}
 }
