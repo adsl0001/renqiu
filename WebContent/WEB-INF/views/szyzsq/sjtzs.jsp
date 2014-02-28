@@ -1225,40 +1225,41 @@ rt
   <td colspan=6 rowspan=5 class=xl9811300 width=476 style='border-right:.5pt solid black;
   border-bottom:.5pt solid black;width:358pt'><font class="font911300">质<span
   style='mso-spacerun:yes'>&nbsp; </span>监：</font><font class="font811300"><input id="Fruit1" type="checkbox"
-						value="" /><label for="Fruit1">组织机构基本信息登记表</label></br><span style='mso-spacerun: yes'>&nbsp;
+						value="" /><label for="Fruit1">组织机构基本信息登记表</label><br><span style='mso-spacerun: yes'>&nbsp;
 					</span><span style='mso-spacerun: yes'>&nbsp;
 					</span><span style='mso-spacerun: yes'>&nbsp;
 					</span><span style='mso-spacerun: yes'>&nbsp;
 					</span><input id="Fruit2" type="checkbox"
 						value=""/><label for="Fruit2">法定代表人身份证件原件、复印件（正反<br>　　　　　面）、预收费单</label> <br>
     </font><font class="font911300">国地税：</font><font class="font811300"><input id="Fruit9" type="checkbox"
-						value="" /><label for="Fruit9">税务登记表</label></br><span style='mso-spacerun: yes'>&nbsp;
+						value="" /><label for="Fruit9">税务登记表</label><br><span style='mso-spacerun: yes'>&nbsp;
 					</span><span style='mso-spacerun: yes'>&nbsp;
 					</span><span style='mso-spacerun: yes'>&nbsp;
 					</span><span style='mso-spacerun: yes'>&nbsp;
 					</span><input id="Fruit3" type="checkbox"
-						value="" /><label for="Fruit3">财务人员身份证（正反面）2份</label></br><span style='mso-spacerun: yes'>&nbsp;
+						value="" /><label for="Fruit3">财务人员身份证（正反面）2份</label><br><span style='mso-spacerun: yes'>&nbsp;
 					</span><span style='mso-spacerun: yes'>&nbsp;
 					</span><span style='mso-spacerun: yes'>&nbsp;
 					</span><span style='mso-spacerun: yes'>&nbsp;
 					</span><input id="Fruit4" type="checkbox"
-						value="" /><label for="Fruit4">财务人员会计从业资格证书原件、复印件2份</label></br><span style='mso-spacerun: yes'>&nbsp;
+						value="" /><label for="Fruit4">财务人员会计从业资格证书原件、复印件2份</label><br><span style='mso-spacerun: yes'>&nbsp;
 					</span><span style='mso-spacerun: yes'>&nbsp;
 					</span><span style='mso-spacerun: yes'>&nbsp;
 					</span><span style='mso-spacerun: yes'>&nbsp;
 					</span><input id="Fruit5" type="checkbox"
-						value="" /><label for="Fruit5">公司章程2份</label></br><span style='mso-spacerun: yes'>&nbsp;
+						value="" /><label for="Fruit5">公司章程2份</label><br><span style='mso-spacerun: yes'>&nbsp;
 					</span><span style='mso-spacerun: yes'>&nbsp;
 					</span><span style='mso-spacerun: yes'>&nbsp;
 					</span><span style='mso-spacerun: yes'>&nbsp;
 					</span><input id="Fruit6" type="checkbox"
-						value="" /><label for="Fruit6">房产证明、租赁协议2份</label></br><span style='mso-spacerun: yes'>&nbsp;
+						value="" /><label for="Fruit6">房产证明、租赁协议2份</label><br><span style='mso-spacerun: yes'>&nbsp;
 					</span><span style='mso-spacerun: yes'>&nbsp;
 					</span><span style='mso-spacerun: yes'>&nbsp;
 					</span><span style='mso-spacerun: yes'>&nbsp;
 					</span><input id="Fruit7" type="checkbox"
 						value="" /><label for="Fruit7">验资报告原件2份</label><br></font>
-    <font class="font911300">公 &nbsp章：</font><font class="font811300"><input id="Fruit8" type="checkbox"
+    <font class="font911300">公<span style='mso-spacerun: yes'>&nbsp;
+					</span>章：</font><font class="font811300"><input id="Fruit8" type="checkbox"
 						value="" /><label for="Fruit8">预收费单</label></font></td>
  </tr>
  <tr height=40 style='mso-height-source:userset;height:30.0pt'>
@@ -1272,18 +1273,17 @@ rt
  <tr height=40 style='mso-height-source:userset;height:30.0pt'>
   <td colspan=3 height=40 class=xl9611300 style='height:30.0pt'>法人代表或代理人</td>
   <td class=xl7111300 style='border-top:none;border-left:none'>　${szyzsq.frxm}　</td>
-  <td class=xl6511300 width=45 style='border-top:none;border-left:none;
-  width:34pt'>交接日期</td>
-  <td colspan=3 class=xl10711300 width=278 style='border-right:.5pt solid black;
-  border-left:none;width:209pt'>　${myDate }</td>
+  <td colspan=2 class=xl9611300 width=45 style='border-top:none;border-left:none;'>交接日期</td>
+  <td align="center" colspan=2 class=xl10711300 width=278 style='border-right:.5pt solid black;
+  border-left:none;width:209pt'>&nbsp;${myDate }</td>
  </tr>
  <tr height=40 style='mso-height-source:userset;height:30.0pt'>
-  <td colspan=3 height=40 class=xl7011300 style='height:30.0pt'>联系电话</td>
+  <td colspan=2 height=40 class=xl7011300 style='height:30.0pt;border-bottom:none'>联系电话</td>
   <td colspan=3 class=xl9111300 style='border-right:.5pt solid black;
-  border-left:none'>　${szyzsq.lxfs}</td>
-  <td class=xl6611300 width=77 style='border-top:none;border-left:none;
+  border-left:none;border-bottom:none'>　${szyzsq.lxfs}</td>
+  <td colspan=2 class=xl9611300 width=77 style='border-left:none;
   width:58pt'>综合窗口接收人</td>
-  <td class=xl6411300 style='border-top:none;border-left:none'>　${assignee }</td>
+  <td colspan=2 class=xl6411300 style='border-top:none;border-left:none;border-bottom:none'>　${assignee }</td>
  </tr>
  <tr height=33 style='mso-height-source:userset;height:24.75pt'>
   <td colspan=8 height=33 class=xl9511300 style='height:24.75pt'>　</td>
@@ -1306,23 +1306,18 @@ rt
   <td colspan=6 class=xl6411300 style='border-left:none'>　${szyzsq.qymc}</td>
  </tr>
  <tr height=40 style='mso-height-source:userset;height:30.0pt'>
-  <td height=40 class=xl6711300 colspan=2 style='height:30.0pt'>法人代表或<span
-  style='display:none'>代理人</span></td>
-  <td colspan=6 class=xl7111300 >　${szyzsq.frxm}</td>
+  <td height=40 class=xl6711300 colspan=3 style='height:30.0pt'>法人代表或代理人</td>
+  <td colspan=5 class=xl7111300 >　${szyzsq.frxm}</td>
  </tr>
  <tr height=40 style='mso-height-source:userset;height:30.0pt'>
-  <td colspan=3 height=40 class=xl7911300 style='border-right:.5pt solid black;
-  height:30.0pt'>证件计划领取时间</td>
-  <td colspan=2 class=xl8211300 style='border-right:.5pt solid black;
-  border-left:none'>&nbsp<input id="planTime" name="planTime" type="text"   style="width: 120px" value="${planTime }"/></td>　</td>
+  <td colspan=3 height=40 class=xl7911300 style='border-right:.5pt solid black; height:30.0pt'>证件计划领取时间</td>
+  <td colspan=2 class=xl8211300 style='border-right:.5pt solid black; border-left:none'>&nbsp<input id="planTime" name="planTime" type="text"   style="width: 120px" value="${planTime }"/></td>　
   <td class=xl7011300 style='border-left:none'>咨询电话</td>
-  <td colspan=2 class=xl8211300 style='border-right:.5pt solid black;
-  border-left:none'>　0317-0000000</td>
+  <td colspan=2 class=xl8211300 style='border-right:.5pt solid black; border-left:none'>　0317-0000000</td>
  </tr>
  <tr height=119 style='mso-height-source:userset;height:89.25pt'>
-  <td colspan=3 height=119 class=xl8411300 style='border-right:.5pt solid black;
-  height:89.25pt'>收件情况</td>
-  <td colspan=5 class=xl8711300 width=424 style='border-right:.5pt solid black;
+  <td colspan=2 height=119 class=xl7911300 style='border-right:.5pt solid black; height:89.25pt'>收件情况</td>
+  <td colspan=6 class=xl8711300 width=424 style='border-right:.5pt solid black;
   border-left:none;width:319pt'>盖章：<br>
     时间：</td>
  </tr>
