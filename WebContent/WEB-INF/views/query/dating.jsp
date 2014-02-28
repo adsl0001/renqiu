@@ -7,6 +7,7 @@
 	<%@ include file="/common/global.jsp"%>
 	 
 	<title>公示</title>
+	<meta http-equiv="refresh" content="600">
 	<%@ include file="/common/meta.jsp" %>
     <%@ include file="/common/include-base-styles.jsp" %>
     <%@ include file="/common/include-jquery-ui-theme.jsp" %>
@@ -67,7 +68,12 @@
  }
  	$(function(){
  		changePage();
+ 		//十分钟刷新一次页面
+ 		//setTimeout(reloadPage,1000*60*10);
  	});
+ 	function reloadPage(){
+ 		window.location.reload();
+ 	}
  </script>
 <div id="containera" class="" style="opacity:1;">
   <div id="ccccxxxx"></div>
