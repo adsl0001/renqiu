@@ -34,7 +34,7 @@
 			<div class="logo">
 				<img src="${ctx }/images/word.png" />
 			</div>
-			<form action="${ctx }/user/logon" method="get">
+			<form action="${ctx }/user/logon" method="post">
 			<div class="content">
 				<div class="c-left">
 					<div class="text-div">
