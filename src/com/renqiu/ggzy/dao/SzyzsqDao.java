@@ -9,9 +9,9 @@ import org.springframework.stereotype.Component;
 import com.renqiu.ggzy.entity.Szyzsq;
 
 /**
- * 请假实体管理接口
+ *  
  * 
- * @author HenryYan
+ * @author 
  */
 @Component
 public interface SzyzsqDao extends CrudRepository<Szyzsq, Long> {
