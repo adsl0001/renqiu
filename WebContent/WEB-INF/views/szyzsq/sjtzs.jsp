@@ -1139,6 +1139,52 @@ body {
 	mso-background-source:auto;
 	mso-pattern:auto;
 	white-space:normal;}
+	.xl1091130000001
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:14.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-number-format:General;
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt dashed windowtext;
+	border-right:none;
+	border-bottom:none;
+	border-left:none;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:nowrap;}
+	.xl791130000001
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:14.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:宋体;
+	mso-generic-font-family:auto;
+	mso-font-charset:134;
+	mso-number-format:General;
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt solid windowtext;
+	border-right:none;
+	border-bottom:none;
+	border-left:none;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	white-space:nowrap;}
 .xl10911300
 	{padding-top:1px;
 	padding-right:1px;
@@ -1208,7 +1254,7 @@ rt
  2944;width:69pt'>
  <tr height=41 style='mso-height-source:userset;height:30.75pt'>
   <td colspan=8 height=41 class=xl7811300 width=580 style='height:30.75pt;
-  width:437pt'>任丘市“四证联办”收件通知书(存根）</td>
+  width:437pt'>任丘市“四证联办”收件通知书(存根）</td><td><p class="noprint"><input type = 'button'	onclick="window.print()" value='打印'></input></p></td>
  </tr>
  <tr height=40 style='mso-height-source:userset;height:30.0pt'>
   <td colspan=8 height=40 class=xl9711300 style='height:30.0pt'>编号：${szyzsq.sqbh}<span style='mso-spacerun: yes'>&nbsp;
@@ -1286,10 +1332,10 @@ rt
   <td colspan=2 class=xl6411300 style='border-top:none;border-left:none;border-bottom:none'>　${assignee }</td>
  </tr>
  <tr height=33 style='mso-height-source:userset;height:24.75pt'>
-  <td colspan=8 height=33 class=xl9511300 style='height:24.75pt'>　</td>
+  <td colspan=8 height=33 class=xl791130000001 style='height:24.75pt'>　</td>
  </tr>
  <tr height=19 style='mso-height-source:userset;height:14.25pt'>
-  <td colspan=8 height=19 class=xl9411300 style='height:14.25pt'></td>
+  <td colspan=8 height=19 class=xl1091130000001 style='height:14.25pt'></td>
  </tr>
  <tr height=40 style='mso-height-source:userset;height:30.0pt'>
   <td colspan=8 height=40 class=xl7811300 style='height:30.0pt'>任丘市<font
