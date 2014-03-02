@@ -35,6 +35,7 @@
 .noprint {
 	visibility: hidden
 }
+
 </style>
 <script type="text/javascript">
 	$(function() {
@@ -1339,7 +1340,8 @@ rt
 </table>
 
 </div>
-
+<center class="noprint"><input type = 'button'	onclick="window.print()" value='打印'></input></center>
+ 
 
 <!----------------------------->
 <!--“从 EXCEL 发布网页”向导结束-->
