@@ -31,5 +31,9 @@ public class ActivityInfoConfig {
 	 * 提前多少分钟预警
 	 */
 	private long minute;
+	/**
+	 * 责任单位名称
+	 */
+	private String dwmc ;
 
 }
