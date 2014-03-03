@@ -30,6 +30,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.renqiu.demo.activiti.entity.oa.Leave;
 import com.renqiu.demo.activiti.service.oa.leave.LeaveManager;
@@ -119,11 +120,11 @@ public class SzyzsqController {
 		return view;
 	}
 
-	public String completeAndPrint(Szyzsq szyzsq, String taskId,
+	public ModelAndView completeAndPrint(Szyzsq szyzsq, String taskId,
 			String assignee, String commentMessage, HttpSession session,
-			String input) {
-		String re = this.completeTask(szyzsq, taskId, assignee, commentMessage,
-				session, input);
+			String input) throws Exception {
+		ModelAndView re = this.completeTask(szyzsq, taskId, assignee,
+				commentMessage, session, input);
 		return re;
 	}
 
@@ -139,14 +140,17 @@ public class SzyzsqController {
 	 *            意见
 	 * @param variable
 	 *            变量
+	 * @throws Exception
 	 */
 	@RequestMapping(value = "completeTask")
-	public String completeTask(Szyzsq szyzsq, String taskId, String assignee,
-			String commentMessage, HttpSession session, String input) {
+	public ModelAndView completeTask(Szyzsq szyzsq, String taskId,
+			String assignee, String commentMessage, HttpSession session,
+			String input) throws Exception {
 		User user = UserUtil.getUserFromSession(session);
 		// 用户未登录不能操作，实际应用使用权限框架实现，例如Spring Security、Shiro等
 		if (user == null || StringUtils.isBlank(user.getId())) {
-			return "redirect:/login?timeout=true";
+			ModelAndView view = new ModelAndView("redirect:/login?timeout=true");
+			return view;
 		}
 		if (StringUtils.isEmpty(assignee)) {
 			assignee = user.getId();
@@ -155,20 +159,24 @@ public class SzyzsqController {
 		if (!StringUtils.isBlank(input)) {
 			paramMap.put("input", input);
 		}
-
+		// 判断是否可以办理，如果不可以办理跳转到错误页面
+		if (!szyzsqManager.canComplete(taskId)) {
+			throw new Exception("流程已经办理完毕,不能重复办理.");
+		}
 		this.szyzsqManager.completeUserTask(szyzsq, user.getId(), taskId,
 				paramMap, assignee, commentMessage);
-		return "redirect:/szyzsq/todoList";
+
+		return new ModelAndView("redirect:/szyzsq/todoList");
 	}
 
 	private static String[] taskIds = { "zonghe_start", "usertask29",
 			"gongshang_start", "usertask4", "usertask23", "usertask11",
 			"usertask10", "usertask12", "usertask13", "usertask14",
 			"usertask24", "usertask25" };
-	private static String[] preTaskId = { "", "zonghe_start", 
-			"usertask29","gongshang_start", "gongshang_start", "gongshang_start", 
-			"gongshang_start","?", "usertask12", "?", 
-			"usertask14","usertask24" };
+	private static String[] preTaskId = { "", "zonghe_start", "usertask29",
+			"gongshang_start", "gongshang_start", "gongshang_start",
+			"gongshang_start", "?", "usertask12", "?", "usertask14",
+			"usertask24" };
 
 	@RequestMapping(value = "rejectTask")
 	public String rejectTask(String taskId, String assignee,
@@ -235,18 +243,19 @@ public class SzyzsqController {
 	 * @param redirectAttributes
 	 * @param session
 	 * @return
+	 * @throws Exception
 	 */
 	@RequestMapping(value = "handleTask/{taskId}")
 	public ModelAndView handleTask(@PathVariable("taskId") String taskId,
-			RedirectAttributes redirectAttributes, HttpSession session) {
+			RedirectAttributes redirectAttributes, HttpSession session)
+			throws Exception {
 		if (StringUtils.isEmpty(taskId)) {
 			redirectAttributes.addFlashAttribute("message", "任务ID不能为空.");
 		}
 		// 判断是否可以办理，如果不可以办理跳转到错误页面
 		if (!szyzsqManager.canComplete(taskId)) {
-			ModelAndView view = new ModelAndView("error/error");
-			view.addObject("errorInfo", "流程已经办理完毕");
-			return view;
+			throw new Exception("流程已经办理完毕,不能重复办理.");
+			 
 		}
 		Szyzsq szyzsq = szyzsqManager.getCurrentProcessInfo(taskId);
 		ModelAndView view = new ModelAndView(szyzsq.getFormKey());

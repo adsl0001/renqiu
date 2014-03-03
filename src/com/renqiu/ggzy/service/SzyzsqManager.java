@@ -293,13 +293,15 @@ public class SzyzsqManager {
 			String commentMessage) {
 		try {
 			// TODO 空值判断
-			// List taskList =
-			// taskService.createTaskQuery().taskId(taskId).list();
-			// Task task = (Task) taskList.get(0);
-			this.saveSzyzsq(szyzsq);
-			identityService.setAuthenticatedUserId(userId);
 			Task task = taskService.createTaskQuery().taskId(taskId)
 					.singleResult();
+			if (task==null ) {
+				//已经办理过了
+				throw new Exception("没有找到id为\""+taskId+"\"的待办任务。");
+			}
+			this.saveSzyzsq(szyzsq);
+			identityService.setAuthenticatedUserId(userId);
+			
 			variables = variables == null ? new HashMap<String, Object>()
 					: variables;
 			taskService.claim(taskId, userId);
@@ -312,7 +314,8 @@ public class SzyzsqManager {
 			taskService.complete(taskId, variables);
 
 			return "success";
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			logger.error("error on complete task {}, variables={}",
 					new Object[] { taskId, variables, e });
 			return "error";

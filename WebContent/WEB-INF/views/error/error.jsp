@@ -9,8 +9,15 @@
 </head>
 
 <body>
-<div><h1>系统运行错误.</h1></div>
-<div>${errorInfo }</div>
+<% Exception ex = (Exception)request.getAttribute("Exception"); %> 
+<H2>系统运行期错误:<br> <%= ex.getMessage()%></H2> 
+<P/> 
+<% 
+	//记录日志
+	Logger logger = LoggerFactory.getLogger("error.jsp");
+	logger.error(ex.getMessage(), ex);
+	%> 
+
 <div><a href="<c:url value="/"/>" target="_parent">返回首页</a></div>
 </body>
 </html>
