@@ -48,7 +48,7 @@
 				</div>
 				
 					<div class="c-right">
-						<button class="login-button">登录</button>
+						<button type="submit" class="login-button">登录</button>
 						<a href="${ctx }/query/public/30" target="blank">查看公示信息</a>
 					</div>
 			</div>
