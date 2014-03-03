@@ -1255,7 +1255,8 @@ rt
  2944;width:69pt'>
  <tr height=41 style='mso-height-source:userset;height:30.75pt'>
   <td colspan=8 height=41 class=xl7811300 width=580 style='height:30.75pt;
-  width:437pt'>任丘市“四证联办”收件通知书(存根）</td><td><p class="noprint"><input type = 'button'	onclick="window.print()" value='打印'></input></p></td>
+  width:437pt'>任丘市“四证联办”收件通知书(存根）</td>
+  <!-- td><p class="noprint"><input type = 'button'	onclick="window.print()" value='打印'></input></p></td> -->
  </tr>
  <tr height=40 style='mso-height-source:userset;height:30.0pt'>
   <td colspan=8 height=40 class=xl9711300 style='height:30.0pt'>编号：${szyzsq.sqbh}<span style='mso-spacerun: yes'>&nbsp;
@@ -1360,7 +1361,7 @@ rt
   <td colspan=3 height=40 class=xl7911300 style='border-right:.5pt solid black; height:30.0pt'>证件计划领取时间</td>
   <td colspan=2 class=xl8211300 style='border-right:.5pt solid black; border-left:none'>&nbsp<input id="planTime" name="planTime" type="text"   style="width: 120px" value="${planTime }"/></td>　
   <td class=xl7011300 style='border-left:none'>咨询电话</td>
-  <td colspan=2 class=xl8211300 style='border-right:.5pt solid black; border-left:none'>　0317-0000000</td>
+  <td colspan=2 class=xl8211300 style='border-right:.5pt solid black; border-left:none'>　0317-2269333</td>
  </tr>
  <tr height=119 style='mso-height-source:userset;height:89.25pt'>
   <td colspan=2 height=119 class=xl7911300 style='border-right:.5pt solid black; height:89.25pt'>收件情况</td>
@@ -1369,7 +1370,7 @@ rt
     时间：</td>
  </tr>
  <tr height=32 style='mso-height-source:userset;height:24.0pt'>
-  <td colspan=8 height=32 class=xl8811300 style='height:24.0pt'>注：凭此收件通知书，领取相关证照</td>
+  <td colspan=8 height=32 class=xl8811300 style='height:24.0pt'>注:持此收件通知书(委托的,持委托人身份证)，领取相关证照</td>
  </tr>
  <![if supportMisalignedColumns]>
  <tr height=0 style='display:none'>
