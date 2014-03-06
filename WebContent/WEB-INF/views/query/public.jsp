@@ -33,6 +33,8 @@
   
   #caption  { /* width: 100%;  */height: 100%; /* padding: 0.4em; */ position: relative; }
   #caption h3 { margin: 0;  padding: 0.4em;  text-align: center; }
+  .mytd{ font-size:1.7em; font-weight: 500; font-weight:bold;}  
+  .myth{ font-size:1.9em; font-weight: 500;font-weight:bold;}  
   </style>
   <script>
   $(function() {
@@ -52,22 +54,24 @@
                	//表头
                	contextHtml += '<table width="100%" class="need-border"> ';
                	contextHtml+=' <thead  > <tr>';
-               	contextHtml+='<th ><center>申报时间</center></th>';
-               	contextHtml+=' 	<th><center>流水号</center></th>';
-               	contextHtml+=' <th><center>办理事项</center></th>';
-               	contextHtml+=' 	<th><center>流程状态</center></th>';
-               	contextHtml+='<th><center>当前环节</center></th>';
-               	contextHtml+='<th><center>是否超期</center></th>';
+               	contextHtml+='<th class="myth"><center>公司核准名称</center></th>';
+               	contextHtml+='<th class="myth"><center>申报时间</center></th>';
+               	contextHtml+=' 	<th class="myth"><center>流水号</center></th>';
+               	contextHtml+=' <th class="myth"><center>办理事项</center></th>';
+               	contextHtml+=' 	<th class="myth"><center>状态</center></th>';
+               	contextHtml+='<th class="myth"><center>当前环节</center></th>';
+               	contextHtml+='<th class="myth"><center>是否超期</center></th>';
                	contextHtml+='</tr> </thead>';	
                	contextHtml+='<tbody>';			
                	$.each(page.result, function() {
                		contextHtml+='<tr>';
-               		contextHtml+='<td><font size ="5px"><center>'+this.sbsj+'</center></font></td>';
-               		contextHtml+='<td><font size ="5px"><center>'+this.lsh+'</center></font></td>';
-               		contextHtml+='<td><font size ="5px"><center>'+'四证联办流程'+'</center></font></td>';
-               		contextHtml+='<td><font size ="5px"><center>'+this.lczt+' </center></font></td>';
-               		contextHtml+='<td><font size ="5px"><center>'+this.dqhj+'</center></font></td>';
-               		contextHtml+='<td><font size ="5px"><center>'+this.sfcq+'</center></font></td></tr>';
+               		contextHtml+='<td class="mytd"> <center>'+this.szyzsq.qymc+'</center></td>';
+               		contextHtml+='<td class="mytd" style="width:120px;"> <center>'+this.sbsj+'</center></td>';
+               		contextHtml+='<td class="mytd"> <center>'+this.lsh+'</center></td>';
+               		contextHtml+='<td class="mytd"> <center>'+'四证联办流程'+'</center></td>';
+               		contextHtml+='<td class="mytd"> <center>'+this.lczt+' </center></td>';
+               		contextHtml+='<td class="mytd"> <center>'+this.dqhj+'</center></td>';
+               		contextHtml+='<td class="mytd"> <center>'+this.sfcq+'</center></td></tr>';
 				});	
                	contextHtml+='</tbody>	</table>';			
                	 dblc.html(contextHtml);
@@ -82,7 +86,7 @@
     };
     //callback function to bring a hidden box back
     function callback() {
-      setTimeout( reOpen, 5000 );
+      setTimeout( reOpen, 1000*10 );
     };
 
  	function reOpen(){
@@ -102,8 +106,8 @@
  
 <div class="toggler">
   <div id ="caption" class="ui-widget-content ui-corner-all">
-    <h3 class="ui-widget-header ui-corner-all">企业注册四证联办监管系统数据公示</h3>
-
+    <h3 class="ui-widget-header ui-corner-all"><span style="font-size:2em;"> 企业注册四证联办监管系统信息公示</span></h3>
+ 
      <div id="effect" >
     	<table width="100%" class="need-border">
 		<thead>

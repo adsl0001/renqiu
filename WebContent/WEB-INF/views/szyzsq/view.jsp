@@ -123,8 +123,8 @@
 				<td>&nbsp; </td>
 				<td>
 					<input type = "button"	onclick="this.disabled=true;this.form.submit()" value="提交"/> 
-					&nbsp;
-					<input type = "button"	onclick="this.disabled=true;goBack();" value="退回上一步"/> 
+<!-- 					&nbsp; -->
+<!-- 					<input type = "button"	onclick="this.disabled=true;goBack();" value="退回上一步"/>  -->
 				</td>
 			</tr>
 		</table>

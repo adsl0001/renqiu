@@ -55,7 +55,7 @@
  
  }
 
- var allUrl =[ctx+"/query/public/15",
+ var allUrl =[ctx+"/query/public/9",
               ctx+"/query/showPhoto/30"];
  var currentIndex=0;
  function getNextUrl(){

@@ -1,5 +1,7 @@
 package com.renqiu.ggzy.vo;
 
+import com.renqiu.ggzy.entity.Szyzsq;
+
 /**
  * 公示信息
  * 
@@ -27,6 +29,8 @@ public class PublicInfo {
 	 * 当前环节
 	 */
 	private String dqhj;
+	
+	private Szyzsq szyzsq;
 	/**
 	 * 是否超期
 	 */
@@ -66,6 +70,12 @@ public class PublicInfo {
 	}
 	public void setSfcq(String sfcq) {
 		this.sfcq = sfcq;
+	}
+	public Szyzsq getSzyzsq() {
+		return szyzsq;
+	}
+	public void setSzyzsq(Szyzsq szyzsq) {
+		this.szyzsq = szyzsq;
 	}
 
 }

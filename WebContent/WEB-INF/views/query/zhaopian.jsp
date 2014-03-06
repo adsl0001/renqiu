@@ -12,11 +12,11 @@
 <title> </title>
 
 <style type="text/css">
-.context{ width:700px; height: 600px; position: absolute;margin-top: -300px; margin-left: -350px; left: 50%; top: 50%; }
+.context{ width:900px; height: 768px; position: absolute;margin-top: -384px; margin-left: -450px; left: 50%; top: 50%; }
 </style>
 </head>
 <body>
-  <div id="context1" class="context"><div id="gundong" style="width:700px;height:600px;"></div></div>
+  <div id="context1" class="context"><div id="gundong" style="width:900px;height:768px;"></div></div>
  
  <script type="text/javascript">
  
@@ -26,17 +26,16 @@
 	               path+"2.jpg",
 	               path+"3.jpg",
 	               path+"4.jpg",
-	               path+"5.jpg",
-	               path+"6.jpg"];
+	               path+"5.jpg" ];
     $( "#gundong" ).bgStretcher({
       images: images,
  				  slideShow: true,
              transitionEffect: "superSlide",
              slideDirection: 'NW',
              nextSlideDelay:5000,
-             slideShowSpeed:'SLOW',
-             imageWidth: 700,
-             imageHeight: 600
+             slideShowSpeed:'slow',
+             imageWidth: 900,
+             imageHeight: 768
     }); 
 
   });

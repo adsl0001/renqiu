@@ -3,6 +3,7 @@ package com.renqiu.ggzy.service;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -64,7 +65,15 @@ public class QueryManager {
 		return null;
 
 	}
-
+	public static Map bm = new HashMap<String, String>();
+	static{
+		bm.put("gongshang_start", "工商窗口");
+		bm.put("usertask23", "工商窗口");
+		bm.put("usertask11", "印章刻制处");
+		bm.put("usertask12", "质监窗口");
+		bm.put("usertask13", "国税窗口");
+		bm.put("usertask14", "地税窗口");
+	}
 	public void queryPublicInfo(Page<PublicInfo> page, int[] pageParams) {
 		List<HistoricProcessInstance> historicProcessInstanceList = historyService
 				.createHistoricProcessInstanceQuery()
@@ -91,7 +100,7 @@ public class QueryManager {
 						&& task.getDueDate().before(
 								Calendar.getInstance().getTime())) {
 					// 已超期
-					sfcq += task.getName() + "已超期;";
+					sfcq += bm.get(task.getTaskDefinitionKey())  + "已超期;";
 				}
 			}
 			if (StringUtils.isEmpty(sfcq)) {
@@ -106,7 +115,10 @@ public class QueryManager {
 					historicProcessInstance.getStartTime(),
 					DateUtil.STANDARD_DATETIME_FORMAT));
 			publicInfo.setLsh(processInstance.getBusinessKey());
-			publicInfo.setLczt("运行中");
+			//获取业务数据
+			Szyzsq szyzsq = szyzsqDao.findOne(Long.valueOf(processInstance.getBusinessKey()));
+			publicInfo.setSzyzsq(szyzsq);
+			publicInfo.setLczt("办理中");
 			publicInfo.setSfcq(sfcq);
 			results.add(publicInfo);
 		}
