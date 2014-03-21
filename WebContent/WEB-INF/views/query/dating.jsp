@@ -13,7 +13,7 @@
     <link href="${ctx }/js/common/plugins/jui/extends/timepicker/jquery-ui-timepicker-addon.css" type="text/css" rel="stylesheet" />
     <link href="${ctx }/js/common/plugins/qtip/jquery.qtip.min.css" type="text/css" rel="stylesheet" />
     <%@ include file="/common/include-custom-styles.jsp" %>
-
+	<link rel="shortcut icon" href="${ctx }/images/favicon.ico" />
     <script src="${ctx }/js/common/jquery-1.8.3.js" type="text/javascript"></script>
     <script src="${ctx }/js/common/plugins/jui/jquery-ui-${themeVersion }.min.js" type="text/javascript"></script>
     <script src="${ctx }/js/common/plugins/jui/extends/timepicker/jquery-ui-timepicker-addon.js" type="text/javascript"></script>
