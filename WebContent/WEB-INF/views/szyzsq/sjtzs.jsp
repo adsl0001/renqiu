@@ -444,7 +444,7 @@ table {
 	border: .5pt solid windowtext;
 	mso-background-source: auto;
 	mso-pattern: auto;
-	white-space: nowrap;
+	white-space: normal;
 }
 
 .xl7712143 {
@@ -1185,19 +1185,20 @@ rt {
 				<td colspan=3 height=40 class=xl10012143 style='height: 30.0pt'>法人代表或代理人</td>
 				<td class=xl6512143 style='border-top: none; border-left: none'>${szyzsq.frxm}
 				</td>
-				<td class=xl6612143 width=45
+				<td  class=xl6612143 width=45
 					style='border-top: none; border-left: none; width: 34pt'>交接日期</td>
-				<td class=xl6512143 style='border-top: none; border-left: none;' >
+				<td colspan=3 class=xl6512143 style='border-top: none; border-left: none;' >
 					${myDate }
 				</td>
-				<td class=xl6712143 width=77
-					style='border-top: none; border-left: none; width: 58pt'>综合窗口接收人</td>
-				<td class=xl6512143 style='border-top: none; border-left: none'>
-				</td>
+				
 			</tr>
 			<tr height=40 style='mso-height-source: userset; height: 30.0pt'>
 				<td colspan=3 height=40 class=xl7612143 style='height: 30.0pt'>联系电话</td>
-				<td colspan=5 class=xl7612143 style='border-left: none'>${szyzsq.lxfs}</td>
+				<td colspan=3 class=xl7612143 style='border-left: none'>${szyzsq.lxfs}</td>
+				<td class=xl7612143 style='border-left: none; width: 58pt;font-size: 12.0pt;'>综合窗口接收人</td>
+				<td class=xl7612143>
+					${assignee }
+				</td>
 			</tr>
 			<tr height=40 style='mso-height-source: userset; height: 30.0pt'>
 				<td height=40 class=xl6812143 style='height: 30.0pt'></td>

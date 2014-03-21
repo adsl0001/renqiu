@@ -21,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.renqiu.demo.activiti.util.UserUtil;
 import com.renqiu.ggzy.entity.Szyzsq;
 import com.renqiu.ggzy.service.SzyzsqManager;
+import com.renqiu.ggzy.util.DateUtil;
 
 @Controller
 @RequestMapping(value = "/szyzsq")
@@ -98,12 +99,13 @@ public class ListController {
 		Szyzsq szyzsq = new Szyzsq();
 		szyzsq.setSqbh(Long.valueOf(sqbh));
 		szyzsq = szyzsqManager.getSzyzsq(Long.valueOf(sqbh));
-//		String assignee = szyzsq.getTask().getAssignee();
+		szyzsq = szyzsqManager.getCurrentProcessInfo(szyzsq);
+		String assignee = szyzsq.getTask().getAssignee();
 		Date myDate = new Date();
 		mv = new ModelAndView("/szyzsq/sjtzs");
 		mv.addObject("szyzsq",szyzsq);
-		mv.addObject("myDate",myDate.toLocaleString());
-//		szyzsq.setSlrxm(assignee);
+		mv.addObject("myDate",DateUtil.getDateFormatString(myDate, DateUtil.STANDARD_DATETIME_FORMAT));
+		mv.addObject("assignee",assignee);
 		return mv;
 	}
 }
