@@ -33,8 +33,8 @@
   
   #caption  { /* width: 100%;  */height: 100%; /* padding: 0.4em; */ position: relative; }
   #caption h3 { margin: 0;  padding: 0.4em;  text-align: center; }
-  .mytd{ font-size:1.7em; font-weight: 500; font-weight:bold;}  
-  .myth{ font-size:1.9em; font-weight: 500;font-weight:bold;}  
+  .mytd{ font-size:1.5em; font-weight: 500; font-weight:bold;}  
+  .myth{ font-size:1.6em; font-weight: 500;font-weight:bold;}  
   </style>
   <script>
   $(function() {
@@ -56,16 +56,16 @@
                	contextHtml+=' <thead  > <tr>';
                	contextHtml+='<th class="myth"><center>公司核准名称</center></th>';
                	contextHtml+='<th class="myth"><center>申报时间</center></th>';
-               	contextHtml+=' 	<th class="myth"><center>流水号</center></th>';
-               	contextHtml+=' <th class="myth"><center>办理事项</center></th>';
-               	contextHtml+=' 	<th class="myth"><center>状态</center></th>';
+               	contextHtml+=' 	<th class="myth" width="70px"><center>流水号</center></th>';
+               	contextHtml+=' <th class="myth" width="90px"><center>办理事项</center></th>';
+               	contextHtml+=' 	<th class="myth" width="70px"><center>状态</center></th>';
                	contextHtml+='<th class="myth"><center>当前环节</center></th>';
                	contextHtml+='<th class="myth"><center>是否超期</center></th>';
                	contextHtml+='</tr> </thead>';	
                	contextHtml+='<tbody>';			
                	$.each(page.result, function() {
                		contextHtml+='<tr>';
-               		contextHtml+='<td class="mytd"> <center>'+this.szyzsq.qymc+'</center></td>';
+               		contextHtml+='<td class="mytd"> <left>'+this.szyzsq.qymc+'</left></td>';
                		contextHtml+='<td class="mytd" style="width:120px;"> <center>'+this.sbsj+'</center></td>';
                		contextHtml+='<td class="mytd"> <center>'+this.lsh+'</center></td>';
                		contextHtml+='<td class="mytd"> <center>'+'四证联办流程'+'</center></td>';
@@ -112,7 +112,7 @@
     	<table width="100%" class="need-border">
 		<thead>
 			<tr class="h1">
-				<t>申报时间</th>
+				<th>申报时间</th>
 				<th>流水号</th>
 				<th>办理事项</th>
 				<th>流程状态</th>

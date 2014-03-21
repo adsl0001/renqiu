@@ -1,5 +1,7 @@
 package com.renqiu.ggzy.web;
 
+import java.util.Date;
+
 import javax.servlet.http.HttpSession;
 
 import oracle.net.aso.s;
@@ -95,8 +97,13 @@ public class ListController {
 		}
 		Szyzsq szyzsq = new Szyzsq();
 		szyzsq.setSqbh(Long.valueOf(sqbh));
+		szyzsq = szyzsqManager.getSzyzsq(Long.valueOf(sqbh));
+//		String assignee = szyzsq.getTask().getAssignee();
+		Date myDate = new Date();
 		mv = new ModelAndView("/szyzsq/sjtzs");
-		mv.addObject(szyzsq);
+		mv.addObject("szyzsq",szyzsq);
+		mv.addObject("myDate",myDate.toLocaleString());
+//		szyzsq.setSlrxm(assignee);
 		return mv;
 	}
 }

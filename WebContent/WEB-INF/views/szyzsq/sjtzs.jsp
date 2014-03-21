@@ -1,16 +1,49 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html lang="en">
 <head>
-<meta http-equiv=Content-Type content="text/html; charset=UTF-8">
+	<%@ include file="/common/global.jsp"%>
+	<script>
+		var notLogon = ${empty user};
+		if (notLogon) {
+			location.href = '${ctx}/login?timeout=true';
+		}
+	</script>
+	<%@ include file="/common/meta.jsp" %>
+    <%@ include file="/common/include-jquery-ui-theme.jsp" %>
+    <link href="${ctx }/js/common/plugins/jui/extends/timepicker/jquery-ui-timepicker-addon.css" type="text/css" rel="stylesheet" />
+    <link href="${ctx }/js/common/plugins/qtip/jquery.qtip.min.css" type="text/css" rel="stylesheet" />
+    <%@ include file="/common/include-custom-styles.jsp" %>
+
+    <script src="${ctx }/js/common/jquery-1.8.3.js" type="text/javascript"></script>
+    <script src="${ctx }/js/common/plugins/jui/jquery-ui-${themeVersion }.min.js" type="text/javascript"></script>
+    <script src="${ctx }/js/common/plugins/jui/extends/timepicker/jquery-ui-timepicker-addon.js" type="text/javascript"></script>
+	<script src="${ctx }/js/common/plugins/jui/extends/i18n/jquery-ui-date_time-picker-zh-CN.js" type="text/javascript"></script>
+	<script src="${ctx }/js/common/plugins/qtip/jquery.qtip.pack.js" type="text/javascript"></script>
+	<script src="${ctx }/js/common/plugins/html/jquery.outerhtml.js" type="text/javascript"></script>
+	<script src="${ctx }/js/module/activiti/workflow.js" type="text/javascript"></script>
+	<script>
+		var notLogon = ${empty user};
+		if (notLogon) {
+			location.href = '${ctx}/login?timeout=true';
+		}
+	</script>
 <title>"四证"联办卡打印页面</title>
 <style media=print type="text/css">
 .noprint {
 	visibility: hidden
 }
 </style>
+<script type="text/javascript">
+	$(function() {
+		$('#planTime').datepicker({
+	// 		 showButtonPanel: true 
+	    });
+	});
+</script>
+
 <style type="text/css">
 body {
 	font-size: 15pt;
@@ -1032,7 +1065,7 @@ rt {
 </style>
 </head>
 
-<body>
+<body">
 	<!--[if !excel]>　　<![endif]-->
 	<!--下列信息由 Microsoft Excel 的发布为网页向导生成。-->
 	<!--如果同一条目从 Excel 中重新发布，则所有位于 DIV 标记之间的信息均将被替换。-->
@@ -1063,18 +1096,20 @@ rt {
 			<tr height=72 style='mso-height-source: userset; height: 54.0pt'>
 				<td colspan=8 height=72 class=xl8412143 width=580
 					style='height: 54.0pt; width: 437pt'>任丘市“四证联办”收件通知书(存根）</td>
-					<td>
-						<p class="noprint"><input type = 'button'	onclick="window.print()" value='打印'></input></p>
-					</td>
+				<td>
+					<p class="noprint">
+						<input type='button' onclick="window.print()" value='打印'></input>
+					</p>
+				</td>
 			</tr>
 			<tr height=40 style='mso-height-source: userset; height: 30.0pt'>
 				<td colspan=8 height=40 class=xl7712143 style='height: 30.0pt'><span
 					style='mso-spacerun: yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				</span>编号：</td>
+				</span>编号：${szyzsq.sqbh}</td>
 			</tr>
 			<tr height=40 style='mso-height-source: userset; height: 30.0pt'>
 				<td colspan=2 height=40 class=xl7612143 style='height: 30.0pt'>企业名称</td>
-				<td colspan=6 class=xl7512143></td>
+				<td colspan=6 class=xl7512143>${szyzsq.qymc}</td>
 			</tr>
 			<tr height=40 style='mso-height-source: userset; height: 30.0pt'>
 				<td colspan=2 rowspan=5 height=284 class=xl8212143
@@ -1133,12 +1168,8 @@ rt {
 					</span></font><font class="font912143"><span style='mso-spacerun: yes'>&nbsp;
 					</span></font><font class="font812143"><input name="Fruit" type="checkbox"
 						value="" /></font><font class="font812143">验资报告原件</font><font
-					class="font812143">2</font><font class="font812143">份</font></br> <font
-					class="font912143"><span style='mso-spacerun: yes'>&nbsp;
-					</span></font><font class="font912143"><span style='mso-spacerun: yes'>&nbsp;
-					</span></font><font class="font912143"><span style='mso-spacerun: yes'>&nbsp;
-					</span></font><font class="font912143"><span style='mso-spacerun: yes'>&nbsp;
-					</span></font><font class="font812143"><br> </font><font class="font912143">公</font><font
+					class="font812143">2</font><font class="font812143">份</font></br> 
+					<font class="font912143">公</font><font
 					class="font912143"> </font><font class="font912143">章：</font>&nbsp;<input
 					name="Fruit" type="checkbox" value="" /><font class="font812143">预收费单</font></td>
 			</tr>
@@ -1152,11 +1183,12 @@ rt {
 			</tr>
 			<tr height=40 style='mso-height-source: userset; height: 30.0pt'>
 				<td colspan=3 height=40 class=xl10012143 style='height: 30.0pt'>法人代表或代理人</td>
-				<td class=xl6512143 style='border-top: none; border-left: none'>
+				<td class=xl6512143 style='border-top: none; border-left: none'>${szyzsq.frxm}
 				</td>
 				<td class=xl6612143 width=45
 					style='border-top: none; border-left: none; width: 34pt'>交接日期</td>
-				<td class=xl6512143 style='border-top: none; border-left: none'>
+				<td class=xl6512143 style='border-top: none; border-left: none;' >
+					${myDate }
 				</td>
 				<td class=xl6712143 width=77
 					style='border-top: none; border-left: none; width: 58pt'>综合窗口接收人</td>
@@ -1165,7 +1197,7 @@ rt {
 			</tr>
 			<tr height=40 style='mso-height-source: userset; height: 30.0pt'>
 				<td colspan=3 height=40 class=xl7612143 style='height: 30.0pt'>联系电话</td>
-				<td colspan=5 class=xl7612143 style='border-left: none'></td>
+				<td colspan=5 class=xl7612143 style='border-left: none'>${szyzsq.lxfs}</td>
 			</tr>
 			<tr height=40 style='mso-height-source: userset; height: 30.0pt'>
 				<td height=40 class=xl6812143 style='height: 30.0pt'></td>
@@ -1185,33 +1217,33 @@ rt {
 			<tr height=40 style='mso-height-source: userset; height: 30.0pt'>
 				<td colspan=8 height=40 class=xl6812143 style='height: 30.0pt'><span
 					style='mso-spacerun: yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				</span>编号：<span style='mso-spacerun: yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+				</span>编号：${szyzsq.sqbh}<span style='mso-spacerun: yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
 			</tr>
 			<tr height=40 style='mso-height-source: userset; height: 30.0pt'>
 				<td colspan=2 height=40 class=xl7612143 style='height: 30.0pt'>企业名称</td>
-				<td colspan=6 class=xl7612143 style='border-left: none'></td>
+				<td colspan=6 class=xl7612143 style='border-left: none'>${szyzsq.qymc}</td>
 			</tr>
 			<tr height=40 style='mso-height-source: userset; height: 30.0pt'>
-				<td height=40 class=xl6912143 colspan=2 style='height: 30.0pt'>法人代表或代<span
-					style='display: none'>理人</span></td>
-				<td class=xl7112143></td>
-				<td colspan=5 class=xl9912143 style='border-left: none'></td>
+				<td height=40 class=xl6912143 colspan=3 style='height: 30.0pt'>法人代表或代理人</span></td>
+				<td colspan=6 class=xl9912143>${szyzsq.frxm}</td>
 			</tr>
 			<tr height=40 style='mso-height-source: userset; height: 30.0pt'>
 				<td colspan=3 height=40 class=xl7212143
 					style='border-right: .5pt solid black; height: 30.0pt'>证件计划领取时间</td>
 				<td colspan=2 class=xl7212143
-					style='border-right: .5pt solid black; border-left: none'></td>
+					style='border-right: .5pt solid black; border-left: none'>
+					<input id="planTime" name="planTime" type="text"   style="width: 120px" value="${planTime }"/></td>
 				<td class=xl6412143 style='border-top: none; border-left: none'>咨询电话</td>
 				<td colspan=2 class=xl7212143
-					style='border-right: .5pt solid black; border-left: none'></td>
+					style='border-right: .5pt solid black; border-left: none'>0317-0000000</td>
 			</tr>
 			<tr height=119 style='mso-height-source: userset; height: 89.25pt'>
-				<td colspan=3 height=119 class=xl9312143
+				<td colspan=2 height=119 class=xl9312143
 					style='border-right: .5pt solid black; height: 89.25pt'>收件情况</td>
-				<td colspan=5 class=xl9612143 width=424
-					style='border-right: .5pt solid black; border-left: none; width: 319pt'>盖章：<font
-					class="font612143"><br> </font><font class="font612143">时间：</font></td>
+					
+				<td colspan=6 class=xl9612143 width=424
+					style='border-right: .5pt solid black; border-left: none; width: 319pt'>盖章:<font
+					class="font612143"><br> </font><font class="font612143">时间:</font></td>
 			</tr>
 			<tr height=32 style='mso-height-source: userset; height: 24.0pt'>
 				<td colspan=8 height=32 class=xl9712143 style='height: 24.0pt'>注：凭此收件通知书，领取相关证照</td>
