@@ -255,7 +255,6 @@ public class SzyzsqController {
 		// 判断是否可以办理，如果不可以办理跳转到错误页面
 		if (!szyzsqManager.canComplete(taskId)) {
 			throw new Exception("流程已经办理完毕,不能重复办理.");
-			 
 		}
 		Szyzsq szyzsq = szyzsqManager.getCurrentProcessInfo(taskId);
 		ModelAndView view = new ModelAndView(szyzsq.getFormKey());

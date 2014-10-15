@@ -2,6 +2,7 @@ package com.renqiu.ggzy.activiti;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -20,6 +21,7 @@ import org.activiti.engine.impl.pvm.PvmTransition;
 import org.activiti.engine.impl.pvm.process.ActivityImpl;
 import org.activiti.engine.impl.pvm.process.ProcessDefinitionImpl;
 import org.activiti.engine.impl.pvm.process.TransitionImpl;
+import org.activiti.engine.impl.task.TaskDefinition;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.Task;
 import org.apache.commons.lang3.StringUtils;
@@ -59,7 +61,6 @@ public class ProcessService {
 		if (StringUtils.isEmpty(activityId)) {
 			throw new Exception("驳回目标节点ID为空！");
 		}
-
 		// 查找所有并行任务节点，同时驳回
 		List<Task> taskList = findTaskListByKey(
 				findProcessInstanceByTaskId(taskId).getId(),
@@ -132,7 +133,6 @@ public class ProcessService {
 		if (variables == null) {
 			variables = new HashMap<String, Object>();
 		}
-	
 		// 跳转节点为空，默认提交操作
 		if (StringUtils.isEmpty(activityId)) {
 			taskService.addComment(taskId, processInstanceId, commentMessage);
